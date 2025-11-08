@@ -6,6 +6,8 @@ import Home from './Pages/Home'
 import Login from './Components/Login'
 import { useAuth } from './Context/Authcontext'
 import Signup from './Components/Signup'
+import Browse from './Pages/browse'
+import AddCourse from './Pages/AddCourse'
 
 function App() {
 
@@ -19,7 +21,7 @@ function App() {
 >
         <Navbar />
         <main>
-          <Outlet />
+          <AddCourse />
         </main>
         <Footer />
       </div>

@@ -9,6 +9,7 @@ import Signup from './Components/Signup.jsx'
 import CourseDetail from './Pages/CourseDetail.jsx'
 import { Authprovider } from './Context/Authcontext.jsx'
 import { Provider } from 'react-redux'
+import { store } from './store/store.js'
 
 const router = createBrowserRouter([
   {

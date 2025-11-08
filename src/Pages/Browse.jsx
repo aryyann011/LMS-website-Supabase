@@ -1,10 +1,65 @@
-import React, {useState} from "react";
-import { useGetCourseQuery } from "../store/apiSlice";
+import React from "react";
+import { useGetCoursesQuery } from "../store/apiSlice";
 
+function Browse() {
+  const { data: courses, isLoading, isError } = useGetCoursesQuery();
 
-function Browse(){
+  if (isLoading) {
+    return <h1>Loading the page...</h1>;
+  }
 
-    const {data : }
+  if (isError) {
+    return <h1>Error loading courses.</h1>;
+  }
+
+  return (
+    <div>
+      <div>
+        <h1>Course List</h1>
+        <p><span>Home</span> / Course list</p>
+      </div>
+
+      <div className="w-7/10 relative flex flex-row items-center justify-end">
+        <img
+          src="/image/search_icon.svg"
+          className="absolute pl-2 left-1"
+          alt=""
+        />
+        <input
+          type="text"
+          placeholder="Search for Courses"
+          className="h-10 w-full p-6 pl-10 border border-[#6B728033] bg-[#FFFFFF]"
+        />
+        <button className="absolute w-1/5 h-9 bg-[#2563EB] right-1 text-[#FFFFFF] rounded-sm">
+          Search
+        </button>
+      </div>
+
+      <div>
+        {Array.isArray(courses) && courses.map((course) => (
+          <div key={course.id}>
+            <img className="h-1/2 w-full" src="/image/img1.png" alt="" />
+            <div className="h-1/2 w-4/5 ml-3 flex flex-col gap-1 mt-3">
+              <h1 className="text-[#0E0E0E] text-1xl font-bold">{course.description}</h1>
+              <span>{course.name}</span>
+              <div className="flex flex-row gap-2">
+                <span>{course.rating}</span>
+                <ul className="flex flex-row items-center">
+                  {[...Array(5)].map((_, i) => (
+                    <li key={i}>
+                      <img src="/image/star_icon.png" alt="" />
+                    </li>
+                  ))}
+                </ul>
+                <span>(122)</span>
+              </div>
+              <h1>{course.price}</h1>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default Browse
+export default Browse;

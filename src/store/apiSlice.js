@@ -1,4 +1,4 @@
-import createApi from '@reduxjs/toolkit/query/react';
+import { createApi } from "@reduxjs/toolkit/query/react";
 import supabaseService from "../Auth/SupabaseService";
 import { supabase } from '../conf/conf';
 
@@ -6,7 +6,7 @@ const fakebaseQuery = () => ({
     data : {}
 })
 
-export const apiSlice = () => createApi({
+export const apiSlice = createApi({
 
     reducerPath : 'api',
     baseQuery : fakebaseQuery,
@@ -15,7 +15,7 @@ export const apiSlice = () => createApi({
 
     endpoints : (builder) => ({
         getCourses : builder.query({
-            async QueryFn(){
+            async queryFn(){
                 try{
                     const {data, error} = await supabase.from('courses').select('*')
                     if(error) throw error
@@ -27,8 +27,23 @@ export const apiSlice = () => createApi({
             },
             providesTags : ['courses'],
         }),
+        
+        addCourses: builder.mutation({
+            async queryFn(newCourse){
+                try{
+                    const {data, error} = await supabase.from('courses').insert(newCourse).select()
+                    if(error) throw error
+
+                    return {data : data}
+                }
+                catch(error){
+                    return {error : {status : error.code, data : error.data}}
+                }
+            },
+            invalidatesTags : ['courses']
+        })
     }),
 
 });
 
-export const {useGetCourseQuery} = apiSlice
+export const {useGetCoursesQuery, useAddCoursesMutation} = apiSlice
