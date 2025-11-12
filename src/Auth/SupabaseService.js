@@ -7,11 +7,6 @@ export class SupabaseService {
             const { data, error } = await supabase.auth.signUp({
                 email: email,
                 password: password,
-                options: {
-                    data: {
-                        role: 'teacher' 
-                    }
-                }
             });
 
             if (error) throw error;
