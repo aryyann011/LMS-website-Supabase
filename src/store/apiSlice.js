@@ -11,7 +11,7 @@ export const apiSlice = createApi({
     reducerPath : 'api',
     baseQuery : fakebaseQuery,
 
-    tagTypes : ['courses'],
+    tagTypes : ['courses', 'section', 'chapter'],
 
     endpoints : (builder) => ({
         getCourses : builder.query({
@@ -41,9 +41,26 @@ export const apiSlice = createApi({
                 }
             },
             invalidatesTags : ['courses']
-        })
+        }),
+
+        GetCourseDetail : builder.query({
+            async queryFn(uId){
+                try{
+                    const {data, error} = await supabase.from('courses').select('*').eq('id', uId).single()
+                    if(error) throw error
+
+                    return {data : data}
+                }
+                catch(error){
+                    return {error : {status : error.code, data : error.data}}
+                }
+            },
+            providesTags: (result, error, id) => [{ type: 'courses', id: id }]
+        }),
+
+        
     }),
 
 });
 
-export const {useGetCoursesQuery, useAddCoursesMutation} = apiSlice
+export const {useGetCoursesQuery, useAddCoursesMutation, useGetCourseDetailQuery} = apiSlice
