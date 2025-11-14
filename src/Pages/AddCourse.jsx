@@ -76,17 +76,6 @@ function AddCourse() {
         })} />
         {errors.description && <span className="text-red-500 text-sm mt-1">{errors.description.message}</span>}
       </div>
-      <div className="w-3/10 h-20 flex flex-col gap-2">
-        <label htmlFor="detailedexpl" className="font-semibold">Description</label>
-        <input type="text"
-        id="description"
-        className="h-15 w-full pl-4 pt-1 border"
-        placeholder="Give the description of the course"
-        {...register("description", {
-            required : true
-        })} />
-        {errors.description && <span className="text-red-500 text-sm mt-1">{errors.description.message}</span>}
-      </div>
       <div className="w-3/10 h-15 flex flex-col gap-2">
         <label htmlFor="price">Course Price</label>
         <input type="text"

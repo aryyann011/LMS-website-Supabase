@@ -43,7 +43,7 @@ export const apiSlice = createApi({
             invalidatesTags : ['courses']
         }),
 
-        GetCourseDetail : builder.query({
+        getCourseDetail : builder.query({
             async queryFn(uId){
                 try{
                     const {data, error} = await supabase.from('courses').select('*').eq('id', uId).single()
@@ -58,9 +58,40 @@ export const apiSlice = createApi({
             providesTags: (result, error, id) => [{ type: 'courses', id: id }]
         }),
 
-        
+        getSectionsForCourse : builder.query({
+            async queryFn(Id){
+                try{
+                    const {data, error} = await supabase.from('section').select('*').eq('course_id', Id)
+                    if(error) throw error
+
+                    return {data : data}
+                }
+                catch(error){
+                    return {error : {status : error.code, data : error.data}}
+                }
+            },
+            providesTags : ['section']
+
+        }),
+
+        getChapterForCourse : builder.query({
+            async queryFn(Id){
+                try{
+                    const {data, error} = await supabase.from('chapter').select('*').eq('section_id', Id)
+
+                    if(error) throw error 
+
+                    return {data : data}
+                }
+                catch(error){
+                    return {error : {status : error.code, data : error.data}}
+                }
+            },
+            providesTags : ['chapter']
+        })
+
     }),
 
 });
 
-export const {useGetCoursesQuery, useAddCoursesMutation, useGetCourseDetailQuery} = apiSlice
+export const {useGetCoursesQuery, useAddCoursesMutation, useGetCourseDetailQuery, useGetChapterForCourseQuery, useGetSectionsForCourseQuery} = apiSlice
