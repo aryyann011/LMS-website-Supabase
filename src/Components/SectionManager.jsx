@@ -1,10 +1,8 @@
 import React from 'react'
-import { useGetChapterForSectionQuery, useGetSectionsForCourseQuery, useAddSectionMutation } from '../store/apiSlice'
-import { MdDelete } from "react-icons/md";
-import { IoIosArrowForward } from "react-icons/io";
-import { FaRegEdit } from "react-icons/fa";
-import { FiSave } from "react-icons/fi";
-import SectionEditor from './SectionEditor';
+import { useGetSectionsForCourseQuery, useAddSectionMutation } from '../store/apiSlice'
+import Dropdown from './Dropdown';
+import ChapterList from './ChapterList';
+
 function SectionManager({courseId}) {
 
     const {data : sections, isLoading : isSectionLoading} = useGetSectionsForCourseQuery(courseId)
@@ -13,7 +11,15 @@ function SectionManager({courseId}) {
   return (
     <div>
       {Array.isArray(sections) && sections.map((section) => (
-        <SectionEditor key={section.id} section={section}/>
+        <Dropdown
+        course_Id={courseId}
+        id={section.id}
+        title={section.title}
+        subtitle={section.subtitle}
+        edit={true}
+        >
+            <ChapterList sectionId={section.id} edit={true} />
+        </Dropdown>
       ))}
     </div>
   )

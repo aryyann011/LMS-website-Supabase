@@ -90,7 +90,7 @@ export const apiSlice = createApi({
             providesTags : ['chapter']
         }),
 
-        addSection : builder.mutation({
+        AddSection : builder.mutation({
             async queryFn(newSection){
                 try {
                     const {data, error} = await supabase.from('section').insert(newSection).select()

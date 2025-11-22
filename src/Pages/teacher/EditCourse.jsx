@@ -10,32 +10,6 @@ import {
   useGetSectionsForCourseQuery 
 } from '../../store/apiSlice';
 
-function Chapter(Id){
-    const {data : chapters, isLoading : isChapterLoading} = useGetChapterForSectionQuery(Id)
-
-    return (
-        <div>
-          {Array.isArray(chapters) && chapters.map((chapter) => (
-            <div key={chapter.id} className="flex justify-between">
-              <p>{chapter.title}</p>
-              <p>{chapter.duration}</p>
-              <div className="h-5 w-7 p-4 flex flex-row">
-                  <div className="mr-3" onClick={() => {
-                      setCheck(true);
-                      setInfo({ id: contact.id, name: contact.name, email: contact.email });
-                      }}
-                      >
-                      <i class="fa-solid fa-user-pen"></i>
-                  </div>
-                  <div onClick={() => deleteContact(contact.id)}>
-                      <i class="fa-solid fa-trash"></i>
-                  </div>
-              </div>
-            </div>
-          ))}
-        </div>
-    )
-}
 function EditCourse() {
 
   const { courseId } = useParams(); 
@@ -83,7 +57,7 @@ function EditCourse() {
     }
   };
 
-  if (isLoading) return <div>Loading course data...</div>;
+  if (isCourseLoading) return <div>Loading course data...</div>;
 
   return (
     <div>
@@ -143,11 +117,11 @@ function EditCourse() {
 
       </form>
 
-      <form>
+      <div>
         <h1>Course Chapter</h1>
         
         <SectionManager courseId={courseId}/>
-      </form>
+      </div>
     </div>
   );
 }

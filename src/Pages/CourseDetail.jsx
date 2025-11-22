@@ -7,21 +7,7 @@ import {
   useGetChapterForSectionQuery,
 } from "../store/apiSlice";
 import Dropdown from "../Components/Dropdown";
-
-function ChapterList({id}){
-    const {data : chapters, isLoading : isChaptertloading} = useGetChapterForSectionQuery(id)
-
-    return (
-        <div>
-            {Array.isArray(chapters) && chapters.map((chapter) => (
-                <div key={chapter.id} className="flex justify-between">
-                    <p>{chapter.title}</p>
-                    <p>{chapter.duration}</p>
-                </div>
-            ))}
-        </div>
-    )
-}
+import ChapterList from "../Components/ChapterList";
 
 function CourseDetail() {
   const { courseId } = useParams();
@@ -58,8 +44,9 @@ function CourseDetail() {
                     <Dropdown
                         key={section.id}
                         title={section.title}
-                        subtitle={section.Subtitle}>
-                            <ChapterList id={section.id}/>
+                        subtitle={section.Subtitle}
+                        edit={false}>
+                            <ChapterList id={section.id} edit={false}/>
                     </Dropdown>
                 )
             })}
