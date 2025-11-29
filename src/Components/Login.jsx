@@ -112,14 +112,14 @@ function Login(){
                     <button 
                         type="button"
                         onClick={() => handleDemoLogin('teacher')}
-                        className="flex-1 flex items-center justify-center gap-2 bg-blue-100 text-blue-700 py-2 rounded-lg hover:bg-blue-200 transition font-semibold text-sm"
+                        className="flex-1 flex items-center justify-center gap-2 border py-2 rounded-lg hover:bg-blue-200 transition font-semibold text-sm"
                     >
                         <FaChalkboardTeacher /> Demo Teacher
                     </button>
                     <button 
                         type="button"
                         onClick={() => handleDemoLogin('student')}
-                        className="flex-1 flex items-center justify-center gap-2 bg-green-100 text-green-700 py-2 rounded-lg hover:bg-green-200 transition font-semibold text-sm"
+                        className="flex-1 flex items-center justify-center gap-2 border py-2 rounded-lg hover:bg-green-200 transition font-semibold text-sm"
                     >
                         <FaUserGraduate /> Demo Student
                     </button>

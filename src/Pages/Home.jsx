@@ -178,7 +178,7 @@ function Home() {
         </ul>
 
         <Link to="/courses">
-          <button className="h-[50px] w-50 flex justify-center items-center text-[16px] text-[#8A8C8F] border border-[#6B728080]">Show all courses</button>
+          <button className="h-[50px] w-50 flex cursor-pointer justify-center items-center text-[16px] text-[#8A8C8F] border border-[#6B728080]">Show all courses</button>
         </Link>
       </div>
 

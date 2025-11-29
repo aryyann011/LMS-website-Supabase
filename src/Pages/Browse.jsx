@@ -94,12 +94,12 @@ function Browse() {
                                      >
                                         View
                                      </Link>
-                                     <Link 
+                                     {/* <Link 
                                         to={`/teacher/edit-course/${course.id}`}
                                         className="px-3 py-1.5 text-sm text-white bg-blue-600 rounded-md hover:bg-blue-700 transition"
                                      >
                                         Edit
-                                     </Link>
+                                     </Link> */}
                                 </div>
                             </div>
                         </div>
