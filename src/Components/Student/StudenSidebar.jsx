@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link, useLocation, NavLink } from 'react-router-dom';
-import { IoReorderThreeOutline } from "react-icons/io5";
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../Context/Authcontext';
 import { MdOutlineBallot } from "react-icons/md";
-import { X } from "lucide-react";
-import { sidebarLinks } from '../../data/dummy';
+import { X } from "lucide-react"; 
 
-function Sidebar() {
+function StudentSidebar() {
   const { isSidebarOpen, toggleSidebar } = useAuth();
   const {user} = useAuth()
   const handleToggle = () => {
@@ -35,28 +33,22 @@ function Sidebar() {
             </div>
     
             <div className="p-4">
-              {sidebarLinks.map((element) => (
-                <div key={element.title} className="mt-4">
+              {[
+        //   { to: '/', icon: <IoReorderThreeOutline className='text-2xl'/>, text: "Home" },
+
+     { to: '/mylearning', icon: <img src="/image/person_tick_icon.png" className='h-5 w-5'/>, 
+        text : "Enrolled Courses" },
+
+  { to: '/courses', icon: <MdOutlineBallot className='text-[25px]' />, text: "All Courses" }
+        ].map((element) => (
+                <Link key={element.text} to={element.to} className="mt-4">
                    <h1 className="text-gray-400 uppercase font-bold text-sm mb-3">
-                     {element.title}
+                     {element.text}
                    </h1>
-                   {element.links.map((link) => (
-                     <NavLink 
-                       key={link.name}
-                       to={`/${link.path}`}
-                       onClick={() => setActiveMenu(false)} 
-                       className={({ isActive }) => 
-                         `flex items-center gap-4 pl-4 pt-3 pb-2.5 rounded-lg text-md m-2 
-                         ${isSidebarOpen ? "bg-[#ADEED9] text-black" : "text-gray-700 hover:bg-gray-100"}`
-                       }
-                     >
-                       <div>
-                        {link.icon}
-                       </div>
-                       <span className="capitalize">{link.name}</span>
-                     </NavLink>
-                   ))}
-                </div>
+                   <div>
+                    {element.icon}
+                   </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -64,4 +56,4 @@ function Sidebar() {
   )
 }
 
-export default Sidebar
+export default StudentSidebar

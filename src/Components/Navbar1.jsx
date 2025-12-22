@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import { Authprovider, useAuth } from "../Context/Authcontext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IoReorderThreeOutline } from "react-icons/io5";
 
 function Navbar(){
 
     const [islogged, setIslogged] = useState(false)
-    const {user, logout, OpenloginModal, OpenSignupModal} = useAuth()
+    const {user, logout, OpenloginModal, OpenSignupModal, toggleSidebar} = useAuth()
     const navigate = useNavigate()
 
     const logoutUser = () => {
@@ -18,8 +19,11 @@ function Navbar(){
     return (
         <>  
         <nav className="min-h-25 sm:min-h-12 w-full flex flex-row relative items-center justify-around ">
+            <div onClick={() => toggleSidebar()}>
+                <IoReorderThreeOutline className='text-2xl'/>
+            </div>
             <Link to="/" className="flex items-center">
-               <Edemy className="left-20"/>
+               <Edemy />
             </Link>
 
             {user ? (<div className="h-8 w-1/4 absolute flex flex-row items-center justify-center gap-3 right-4">
