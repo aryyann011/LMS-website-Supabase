@@ -13,11 +13,11 @@ function StudentSidebar() {
 
   return (
     <div className={`
-            fixed inset-y-0 left-0 z-50 bg-white border-r transition-all duration-500
-            ${isSidebarOpen ? 'w-72' : 'w-0'} 
-            md:static 
-            ${!isSidebarOpen && 'md:hidden'}
-        `}>
+    fixed inset-y-0 left-0 z-50 w-72 bg-white border-r
+    transform transition-transform duration-300 ease-in-out
+    ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+    md:static md:translate-x-0
+  `}>
           <div className="h-full flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 pb-10">
             
             <div className="flex justify-between items-center p-4 border-b">
@@ -26,7 +26,7 @@ function StudentSidebar() {
                 <button 
                     type="button"
                     onClick={() => toggleSidebar()}
-                    className="p-2 hover:bg-gray-100 rounded-full md:hidden"
+                    className="p-2 hover:bg-gray-100 rounded-full"
                 >
                     <X className="w-6 h-6" />
                 </button>
