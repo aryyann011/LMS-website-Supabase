@@ -15,11 +15,10 @@ function Sidebar() {
 
   return (
     <div className={`
-            fixed inset-y-0 left-0 z-50 bg-white border-r transition-all duration-300
-            ${isSidebarOpen ? 'w-72' : 'w-0'} 
-            md:static 
-            ${!isSidebarOpen && 'md:hidden'}
-        `}>
+      fixed inset-y-0 left-0 z-50 w-64 bg-white border-r
+      transform transition-transform duration-300 ease-in-out
+      ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+    `}>
           <div className="h-full flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 pb-10">
             
             <div className="flex justify-between items-center p-4 border-b">
@@ -44,7 +43,7 @@ function Sidebar() {
                      <NavLink 
                        key={link.name}
                        to={`/${link.path}`}
-                       onClick={() => setActiveMenu(false)} 
+                       onClick={() => toggleSidebar()} 
                        className={({ isActive }) => 
                          `flex items-center gap-4 pl-4 pt-3 pb-2.5 rounded-lg text-md m-2 
                          ${isSidebarOpen ? "bg-[#ADEED9] text-black" : "text-gray-700 hover:bg-gray-100"}`

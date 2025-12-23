@@ -40,19 +40,21 @@ const router = createBrowserRouter([
         path : '/mylearning',
         element : <StudentDashboard/>
       },
+      // {
+      //   element :<ProtectedRoute/>,
+      //   children : [
       {
-        element :<ProtectedRoute/>,
+        path : '/teacher',
+        element : <TeacherLayout/>,
         children : [
-          // {
-          //   path : '/teacher',
-          //   element : <TeacherLayout/>,
-          //   children : [
           {path : '/teacher/dashboard', element : <Dashboard/>},
           {path : '/teacher/addCourse', element : <AddCourse/>},
           {path : '/teacher/mycourse', element : <Mycourse/>},
           {path : '/teacher/edit-course/:courseId', element : <EditCourse/>}
         ]
-      } 
+      }
+      //   ]
+      // } 
     ]
   }
 ])

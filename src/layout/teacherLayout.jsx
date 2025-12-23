@@ -1,14 +1,23 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import Sidebar from '../Components/teacher/Sidebar';
+import { useAuth } from '../Context/Authcontext'
+import { Outlet, Navigate } from 'react-router-dom'
 
-export default function TeacherLayout() {
+function TeacherLayout() {
+
+    const {user, isLoading} = useAuth()
+    // const Navigate = useNavigate()
+    if(isLoading) return <h1>Loading....</h1>
   return (
-    <div className="flex">
+    (user?.user_metadata?.role === 'teacher') 
+      ? <div className="flex">
       <Sidebar/>
       <div className="flex-1 p-10">
         <Outlet />
       </div>
-    </div>
-  );
+    </div>  
+      : <Navigate to="/" replace /> 
+  )
 }
+
+export default TeacherLayout

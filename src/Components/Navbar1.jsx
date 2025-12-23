@@ -27,7 +27,7 @@ function Navbar(){
         <div className="flex items-center gap-3">
           {user && (
             <button
-              onClick={toggleSidebar}
+              onClick={() => toggleSidebar()}
               className="text-2xl cursor-pointer"
             >
               <IoReorderThreeOutline />
