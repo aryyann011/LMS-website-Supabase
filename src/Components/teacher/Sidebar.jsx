@@ -27,7 +27,7 @@ function Sidebar() {
                 <button 
                     type="button"
                     onClick={() => toggleSidebar()}
-                    className="p-2 hover:bg-gray-100 rounded-full md:hidden"
+                    className="p-2 hover:bg-gray-100 rounded-full"
                 >
                     <X className="w-6 h-6" />
                 </button>

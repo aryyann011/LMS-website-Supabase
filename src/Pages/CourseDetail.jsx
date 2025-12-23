@@ -150,7 +150,7 @@ function CourseDetail() {
               ) : isEnrolled ? (
                 // CASE C: User is enrolled
                 <button 
-                  onClick={() => navigate('/my-learning')}
+                  onClick={() => navigate('my-learning')}
                   className="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700"
                 >
                   Go to Course

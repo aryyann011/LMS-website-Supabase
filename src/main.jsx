@@ -18,6 +18,7 @@ import Dashboard from './Pages/teacher/TeacherDashboard.jsx'
 import Mycourse from './Pages/teacher/MyCourse.jsx'
 import EditCourse from './Pages/teacher/EditCourse.jsx'
 import StudentDashboard from './Pages/Student/Dashboard.jsx'
+import StudentLayout from './layout/StudentLayout.jsx'
 
 const router = createBrowserRouter([
   {
@@ -29,22 +30,24 @@ const router = createBrowserRouter([
         element : <Home/>
       },
       {
-        path : '/CourseDetail/:courseId',
+        path : 'CourseDetail/:courseId',
         element : <CourseDetail/>
       },
       {
-        path : '/courses',
+        path : 'courses',
         element : <Browse/>
       },
       {
-        path : '/mylearning',
-        element : <StudentDashboard/>
+        path : 'student',
+        element: <StudentLayout />,
+        children: [
+          // Note: No leading slashes here!
+          {path : 'mylearning', element : <StudentDashboard/>},
+        ]
       },
-      // {
-      //   element :<ProtectedRoute/>,
-      //   children : [
+      
       {
-        path: '/teacher',
+        path: 'teacher',
         element: <TeacherLayout />,
         children: [
           // Note: No leading slashes here!
