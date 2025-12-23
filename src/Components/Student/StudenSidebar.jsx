@@ -13,7 +13,7 @@ function StudentSidebar() {
 
   return (
     <div className={`
-    fixed inset-y-0 left-0 z-50 w-64 bg-white border-r md:hidden
+    fixed inset-y-0 left-0 z-50 w-64 bg-white border-r md:block
     transform transition-transform duration-300 ease-in-out
     ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
   `}>

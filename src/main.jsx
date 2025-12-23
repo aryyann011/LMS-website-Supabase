@@ -48,6 +48,7 @@ const router = createBrowserRouter([
         element: <TeacherLayout />,
         children: [
           // Note: No leading slashes here!
+          {path : '', element : <Home/>},
           { path: 'dashboard', element: <Dashboard /> }, 
           { path: 'addCourse', element: <AddCourse /> },
           { path: 'mycourse', element: <Mycourse /> },
