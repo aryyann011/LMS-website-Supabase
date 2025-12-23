@@ -33,9 +33,9 @@ function StudentSidebar() {
             <div className="p-4">
 
               {[
-     { to: '/mylearning', icon: <img src="/image/person_tick_icon.png" className='w-5'/>, 
+     { to: 'mylearning', icon: <img src="/image/person_tick_icon.png" className='w-5'/>, 
         text : "Enrolled Courses" },
-  { to: '/courses', icon: <MdOutlineBallot className='text-[25px]' />, text: "All Courses" }
+  { to: 'courses', icon: <MdOutlineBallot className='text-[25px]' />, text: "All Courses" }
         ].map((element) => (
                 <Link key={element.text} to={element.to} className="w-65 mt-4 flex justify-start items-start">
                    <h1 className=" font-semibold text-[18px] mb-3">

@@ -43,7 +43,7 @@ function Navbar(){
           {user ? (
             <>
               {user.user_metadata?.role === "teacher" && (
-                <Link to="/teacher/addCourse" className="font-medium">
+                <Link to="teacher/addCourse" className="font-medium">
                   Add Course
                 </Link>
               )}

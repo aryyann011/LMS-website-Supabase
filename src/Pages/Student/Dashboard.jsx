@@ -81,7 +81,7 @@ function StudentDashboard() {
                 <td colSpan="4" className="p-10 text-center text-gray-500">
                   You haven't enrolled in any courses yet.
                   <br />
-                  <Link to="/courses" className="text-blue-600 hover:underline mt-2 inline-block">
+                  <Link to="courses" className="text-blue-600 hover:underline mt-2 inline-block">
                     Browse Courses
                   </Link>
                 </td>

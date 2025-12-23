@@ -17,37 +17,37 @@ export const sidebarLinks = [
   {
     title: "DASHBOARD",
     links: [
-      { name: "Ecommerce", path: "/dashboard", icon: <ShoppingBag/> },
+      { name: "Ecommerce", path: "dashboard", icon: <ShoppingBag/> },
     ],
   },
   {
     title: "PAGES",
     links: [
-      { name: "Orders", path: "/orders", icon: <ShoppingCart/> },
-      { name: "Employees", path: "/employees", icon: <Users/> },
-      { name: "Customers", path: "/customers", icon: <UserCheck/> },
+      { name: "Orders", path: "orders", icon: <ShoppingCart/> },
+      { name: "Employees", path: "employees", icon: <Users/> },
+      { name: "Customers", path: "customers", icon: <UserCheck/> },
     ],
   },
   {
     title: "APPS",
     links: [
-      { name: "Calendar", path: "/apps/calendar", icon: <CalendarDays/> },
-      { name: "Kanban", path: "/apps/kanban", icon: <Kanban/> },
-      { name: "Editor", path: "/apps/editor", icon: <FileEdit/> },
-      { name: "Color Picker", path: "/apps/color-picker", icon: <Palette/> },
+      { name: "Calendar", path: "apps/calendar", icon: <CalendarDays/> },
+      { name: "Kanban", path: "apps/kanban", icon: <Kanban/> },
+      { name: "Editor", path: "apps/editor", icon: <FileEdit/> },
+      { name: "Color Picker", path: "apps/color-picker", icon: <Palette/> },
     ],
   },
   {
     title: "CHARTS",
     links: [
-      { name: "Line", path: "/charts/line", icon: <TrendingUp/> },
-      { name: "Area", path: "/charts/area", icon: <AreaChart/> },
-      { name: "Bar", path: "/charts/bar", icon: <BarChart3/>},
-      { name: "Pie", path: "/charts/pie", icon: <PieChart/> },
-      { name: "Financial", path: "/charts/financial", icon: <CandlestickChart/> },
-      { name: "Color Mapping", path: "/charts/color-mapping", icon: <Layers/> },
-      { name: "Pyramid", path: "/charts/pyramid", icon: <Triangle/> },
-      { name: "Stacked", path: "/charts/stacked", icon: <AlignVerticalSpaceAround/> },
+      { name: "Line", path: "charts/line", icon: <TrendingUp/> },
+      { name: "Area", path: "charts/area", icon: <AreaChart/> },
+      { name: "Bar", path: "charts/bar", icon: <BarChart3/>},
+      { name: "Pie", path: "charts/pie", icon: <PieChart/> },
+      { name: "Financial", path: "charts/financial", icon: <CandlestickChart/> },
+      { name: "Color Mapping", path: "charts/color-mapping", icon: <Layers/> },
+      { name: "Pyramid", path: "charts/pyramid", icon: <Triangle/> },
+      { name: "Stacked", path: "charts/stacked", icon: <AlignVerticalSpaceAround/> },
     ],
   },
 ];

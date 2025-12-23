@@ -65,7 +65,7 @@ function EditCourse() {
 
         if(error) throw error
         toast.success('succesfully deleted')
-        navigate('/teacher/mycourse')
+        navigate('teacher/mycourse')
 
       } catch (error) {
         console.log("failed to delete course :" , error)

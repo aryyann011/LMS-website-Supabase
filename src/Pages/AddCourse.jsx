@@ -17,7 +17,7 @@ function AddCourse() {
       if(isSuccess){
         toast.success("Course Added Succesfully!")
         reset();
-        navigate('/teacher/mycourse')
+        navigate('teacher/mycourse')
       }
       if(isError){
         const message = mutationError?.data?.message || "Failed to add course. Please try again.";

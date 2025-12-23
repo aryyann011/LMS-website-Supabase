@@ -42,7 +42,7 @@ function Sidebar() {
                    {element.links.map((link) => (
                      <NavLink 
                        key={link.name}
-                       to={`/${link.path}`}
+                       to={`${link.path}`}
                        onClick={() => toggleSidebar()} 
                        className={({ isActive }) => 
                          `flex items-center gap-4 pl-4 pt-3 pb-2.5 rounded-lg text-md m-2 

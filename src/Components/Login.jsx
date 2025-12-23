@@ -25,8 +25,8 @@ function Login(){
                 const role = session.user?.user_metadata?.role
 
                 if(role === 'student')
-                navigate('/')
-                else navigate('/teacher')
+                navigate('student')
+                else navigate('teacher')
             }
 
         }
