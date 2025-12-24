@@ -3,58 +3,88 @@ import { HiCurrencyDollar } from "react-icons/hi";
 import { BsShieldFillCheck } from "react-icons/bs";
 import { TfiCreditCard } from "react-icons/tfi";
 import { ShoppingBag, ShoppingCart, Palette, FileEdit, Kanban, CalendarDays, UserCheck, Users, AlignVerticalSpaceAround,
-  Triangle, Layers, CandlestickChart, PieChart, BarChart3, AreaChart, TrendingUp} from 'lucide-react';
+  Triangle, Layers, CandlestickChart, PieChart, BarChart3, AreaChart, TrendingUp, BookOpen } from 'lucide-react';
 
-export const gridOrderImage = (props) => (
-  props.ProductImage
+// ----------------------------------------------------------------------
+// 1. HELPER COMPONENTS
+// ----------------------------------------------------------------------
+
+export const gridStudentImage = (props) => (
+  <div>
+    <img
+      className="rounded-xl h-20 md:ml-3"
+      src={props.StudentImage}
+      alt="student-avatar"
+    />
+  </div>
 );
 
-export const gridOrderStatus = (props) => (
-  props.Status
+export const gridStatus = (props) => (
+  <button
+    type="button"
+    style={{ background: props.StatusBg }}
+    className="text-white py-1 px-2 capitalize rounded-2xl text-md"
+  >
+    {props.Status}
+  </button>
 );
+
+// ----------------------------------------------------------------------
+// 2. SIDEBAR LINKS (VARIABLE NAME PRESERVED)
+// ----------------------------------------------------------------------
 
 export const sidebarLinks = [
   {
     title: "DASHBOARD",
     links: [
-      { name: "Ecommerce", path: "dashboard", icon: <ShoppingBag/> },
+      { name: "Overview", path: "/teacher/dashboard", icon: <TrendingUp/> },
+      { name: "Analytics", path: "/teacher/analytics", icon: <AreaChart/> },
     ],
   },
   {
-    title: "PAGES",
+    title: "CONTENT",
     links: [
-      { name: "Orders", path: "orders", icon: <ShoppingCart/> },
-      { name: "Employees", path: "employees", icon: <Users/> },
-      { name: "Customers", path: "customers", icon: <UserCheck/> },
+      { name: "My Courses", path: "/teacher/mycourse", icon: <BookOpen/> },
+      { name: "Add Course", path: "/teacher/addCourse", icon: <FileEdit/> },
+      { name: "Students", path: "/teacher/students", icon: <Users/> },
     ],
   },
   {
     title: "APPS",
     links: [
-      { name: "Calendar", path: "apps/calendar", icon: <CalendarDays/> },
-      { name: "Kanban", path: "apps/kanban", icon: <Kanban/> },
-      { name: "Editor", path: "apps/editor", icon: <FileEdit/> },
-      { name: "Color Picker", path: "apps/color-picker", icon: <Palette/> },
+      { name: "Schedule", path: "/teacher/calendar", icon: <CalendarDays/> },
+      { name: "Task Board", path: "/teacher/kanban", icon: <Kanban/> },
+      { name: "Editor", path: "/teacher/editor", icon: <FileEdit/> },
+      { name: "Color Picker", path: "/teacher/color-picker", icon: <Palette/> },
     ],
   },
   {
     title: "CHARTS",
     links: [
-      { name: "Line", path: "charts/line", icon: <TrendingUp/> },
-      { name: "Area", path: "charts/area", icon: <AreaChart/> },
-      { name: "Bar", path: "charts/bar", icon: <BarChart3/>},
-      { name: "Pie", path: "charts/pie", icon: <PieChart/> },
-      { name: "Financial", path: "charts/financial", icon: <CandlestickChart/> },
-      { name: "Color Mapping", path: "charts/color-mapping", icon: <Layers/> },
-      { name: "Pyramid", path: "charts/pyramid", icon: <Triangle/> },
-      { name: "Stacked", path: "charts/stacked", icon: <AlignVerticalSpaceAround/> },
+      { name: "Line", path: "/teacher/charts/line", icon: <TrendingUp/> },
+      { name: "Area", path: "/teacher/charts/area", icon: <AreaChart/> },
+      { name: "Bar", path: "/teacher/charts/bar", icon: <BarChart3/>},
+      { name: "Pie", path: "/teacher/charts/pie", icon: <PieChart/> },
+      { name: "Financial", path: "/teacher/charts/financial", icon: <CandlestickChart/> },
+      { name: "Color Mapping", path: "/teacher/charts/color-mapping", icon: <Layers/> },
+      { name: "Pyramid", path: "/teacher/charts/pyramid", icon: <Triangle/> },
+      { name: "Stacked", path: "/teacher/charts/stacked", icon: <AlignVerticalSpaceAround/> },
     ],
   },
 ];
 
-// ------------------------------
-// USER PROFILE
-// ------------------------------
+// ----------------------------------------------------------------------
+// 3. USER PROFILE
+// ----------------------------------------------------------------------
+
+export const userProfileData = {
+  name: "Alex Johnson",
+  email: "alex.teacher@xdemy.com",
+  role: "Senior Instructor",
+  avatar: "https://i.pravatar.cc/150?img=12",
+  icon: "User",
+};
+
 export const userProfile = [
   {
     icon: <HiCurrencyDollar />,
@@ -79,31 +109,23 @@ export const userProfile = [
   },
 ];
 
-export const userProfileData = {
-  name: "Michael Roberts",
-  email: "michael@shoppy.com",
-  role: "Administrator",
-  avatar: "https://i.pravatar.cc/150?img=3",
-  icon: "User",
-};
-
 export const userProfileOptions = [
   {
-    icon: "DollarSign",
+    icon: <HiCurrencyDollar />,
     title: 'My Profile',
     desc: 'Account Settings',
     iconColor: '#03C9D7',
     iconBg: '#E5FAFB',
   },
   {
-    icon: "Shield",
+    icon: <BsShieldFillCheck />,
     title: 'My Inbox',
     desc: 'Messages & Emails',
     iconColor: 'rgb(0, 194, 146)',
     iconBg: 'rgb(235, 250, 242)',
   },
   {
-    icon: "CreditCard",
+    icon: <TfiCreditCard />,
     title: 'My Tasks',
     desc: 'To-do and Daily Tasks',
     iconColor: 'rgb(255, 244, 229)',
@@ -111,27 +133,28 @@ export const userProfileOptions = [
   },
 ];
 
-// ------------------------------
-// CHAT & CART & NOTIFICATIONS
-// ------------------------------
+// ----------------------------------------------------------------------
+// 4. CHAT & CART & NOTIFICATIONS
+// ----------------------------------------------------------------------
+
 export const chatData = [
   {
     image: "https://i.pravatar.cc/150?img=12",
-    message: "Roman Joined the Team!",
-    desc: "Congratulate him",
+    message: "New Student Enrolled!",
+    desc: "Roman joined 'React 101'",
     time: "9:08 AM",
     icon: "MessageCircle",
   },
   {
     image: "https://i.pravatar.cc/150?img=5",
-    message: "New message received",
-    desc: "Salma sent you new message",
+    message: "Question in Q&A",
+    desc: "Salma asked about useEffect",
     time: "11:56 AM",
     icon: "Mail",
   },
   {
     image: "https://i.pravatar.cc/150?img=3",
-    message: "New Payment received",
+    message: "Payout Processed",
     desc: "Check your earnings",
     time: "4:39 AM",
     icon: "DollarSign",
@@ -140,22 +163,22 @@ export const chatData = [
 
 export const cartData = [
   {
-    image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=200&h=200",
-    name: "Butterscotch Ice Cream",
-    category: "Milk Product",
-    price: "$250",
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=200&h=200",
+    name: "React Router In-Depth",
+    category: "Web Development",
+    price: "$29",
   },
   {
-    image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=200&h=200",
-    name: "Supreme Fresh Tomato",
-    category: "Vegetable Item",
-    price: "$450",
+    image: "https://images.unsplash.com/photo-1627398242450-274ec8810095?auto=format&fit=crop&w=200&h=200",
+    name: "Mastering TypeScript",
+    category: "Programming",
+    price: "$45",
   },
   {
-    image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=200&h=200",
-    name: "Cauliflower",
-    category: "Food Item",
-    price: "$190",
+    image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?auto=format&fit=crop&w=200&h=200",
+    name: "UI/UX Fundamentals",
+    category: "Design",
+    price: "$19",
   },
 ];
 
@@ -187,36 +210,37 @@ export const notifications = [
 ];
 
 
-// ------------------------------
-// DASHBOARD STATS
-// ------------------------------
+// ----------------------------------------------------------------------
+// 5. DASHBOARD STATS (RENAMED TO LMS CONTEXT)
+// ----------------------------------------------------------------------
+
 export const earningCards = [
   {
-    title: "Earnings",
+    title: "Total Revenue",
     amount: "$63,448.78",
     icon: "DollarSign",
     iconBg: "#E0F7FA",
     iconColor: "#00ACC1",
   },
   {
-    title: "Customers",
-    amount: "39,354",
+    title: "Active Students",
+    amount: "3,354",
     percentage: "-4%",
     icon: "Users",
     iconBg: "#E8F5E9",
     iconColor: "#43A047",
   },
   {
-    title: "Products",
-    amount: "4,396",
+    title: "Total Courses",
+    amount: "24",
     percentage: "+23%",
-    icon: "Box",
+    icon: "Box", 
     iconBg: "#FFF8E1",
     iconColor: "#FDD835",
   },
   {
-    title: "Sales",
-    amount: "423,39",
+    title: "Completion Rate",
+    amount: "86%",
     percentage: "+38%",
     icon: "BarChart3",
     iconBg: "#FFF3E0",
@@ -226,56 +250,56 @@ export const earningCards = [
 
 export const recentTransactions = [
   {
-    title: "Paypal Transfer",
+    title: "Course Sale: React 101",
     amount: "+$350",
     status: "Added",
     icon: "Wallet",
     iconColor: "#00ACC1",
     iconBg: "#E0F7FA",
-    desc: "Money Added",
+    desc: "New Enrollment",
   },
   {
-    title: "Wallet Payment",
+    title: "Refund Processed",
     amount: "-$560",
     status: "Bill",
     icon: "Shield",
     iconColor: "#4CAF50",
     iconBg: "#E8F5E9",
-    desc: "Bill Payment",
+    desc: "Course Refund",
   },
   {
-    title: "Credit Card Refund",
+    title: "Monthly Payout",
     amount: "+$350",
     status: "Reversed",
     icon: "CreditCard",
     iconColor: "#FDD835",
     iconBg: "#FFF8E1",
-    desc: "Money reversed",
+    desc: "Transferred to Bank",
   },
   {
-    title: "Bank Transfer",
+    title: "Course Sale: Figma Master",
     amount: "+$350",
     status: "Added",
     icon: "ArrowUpRight",
     iconColor: "#E57373",
     iconBg: "#FFEBEE",
-    desc: "Money Added",
+    desc: "New Enrollment",
   },
 ];
 
 export const weeklyStats = [
   {
-    title: "Top Sales",
-    amount: "-$560",
-    desc: "Johnathan Doe",
+    title: "Top Selling Course",
+    amount: "+$560",
+    desc: "React Router In-Depth",
     icon: "ShoppingCart",
     iconBg: "#FB9678",
-    pcColor: "red-600",
+    pcColor: "green-600",
   },
   {
-    title: "Best Seller",
+    title: "Best Instructor",
     amount: "+$230",
-    desc: "MaterialPro Admin",
+    desc: "Alex Johnson",
     icon: "Star",
     iconBg: "#FDD835",
     pcColor: "green-600",
@@ -283,7 +307,7 @@ export const weeklyStats = [
   {
     title: "Most Commented",
     amount: "+$156",
-    desc: "Ample Admin",
+    desc: "Web Dev Bootcamp",
     icon: "MessageCircle",
     iconBg: "#00C292",
     pcColor: "green-600",
@@ -299,174 +323,180 @@ export const themeColors = [
   { color: '#FB9678', name: 'orange-theme' },
 ];
 
-// ------------------------------
-// GRID DATA (Orders, Employees, Customers)
-// ------------------------------
+// ----------------------------------------------------------------------
+// 6. GRID DATA (RENAMED VARIABLES AS PER LMS)
+// ----------------------------------------------------------------------
 
-export const ordersGrid = [
-  { headerText: 'Image', field: 'ProductImage', textAlign: 'Center', width: '120' },
-  { headerText: 'Item', field: 'OrderItems', width: '150', textAlign: 'Center' },
-  { headerText: 'Customer Name', field: 'CustomerName', width: '150', textAlign: 'Center' },
-  { headerText: 'Total Amount', field: 'TotalAmount', format: 'C2', textAlign: 'Center', width: '150' },
+// RENAMED: ordersGrid -> enrollmentsGrid
+export const enrollmentsGrid = [
+  { headerText: 'Student', field: 'StudentImage', textAlign: 'Center', width: '120' },
+  { headerText: 'Enrolled Course', field: 'CourseTitle', width: '150', textAlign: 'Center' },
+  { headerText: 'Student Name', field: 'StudentName', width: '150', textAlign: 'Center' },
+  { headerText: 'Price', field: 'Price', format: 'C2', textAlign: 'Center', width: '150' },
   { headerText: 'Status', field: 'Status', textAlign: 'Center', width: '120' },
-  { headerText: 'Order ID', field: 'OrderID', width: '120', textAlign: 'Center' },
+  { headerText: 'Enrollment ID', field: 'EnrollmentID', width: '120', textAlign: 'Center' },
   { headerText: 'Location', field: 'Location', width: '150', textAlign: 'Center' },
 ];
 
-export const ordersData = [
+// RENAMED: ordersData -> enrollmentsData
+export const enrollmentsData = [
   {
-    OrderID: 10248,
-    CustomerName: 'Vinet',
-    TotalAmount: 32.38,
-    OrderItems: 'Fresh Tomato',
+    EnrollmentID: 10248,
+    StudentName: 'Vinet Rouche',
+    Price: 32.38,
+    CourseTitle: 'React Router In-Depth',
     Location: 'USA',
-    Status: 'pending',
+    Status: 'paid',
     StatusBg: '#FB9678',
-    ProductImage: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=50&q=80',
+    StudentImage: 'https://i.pravatar.cc/150?img=1',
   },
   {
-    OrderID: 345653,
-    CustomerName: 'Carson Darrin',
-    TotalAmount: 56.34,
-    OrderItems: 'Butter Scotch',
+    EnrollmentID: 345653,
+    StudentName: 'Carson Darrin',
+    Price: 56.34,
+    CourseTitle: 'Advanced CSS Animations',
     Location: 'Delhi',
     Status: 'complete',
     StatusBg: '#8BE78B',
-    ProductImage: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=50&q=80',
+    StudentImage: 'https://i.pravatar.cc/150?img=2',
   },
   {
-    OrderID: 390457,
-    CustomerName: 'Fran Perez',
-    TotalAmount: 93.31,
-    OrderItems: 'Candy Gucci',
+    EnrollmentID: 390457,
+    StudentName: 'Fran Perez',
+    Price: 93.31,
+    CourseTitle: 'Full Stack MERN Bootcamp',
     Location: 'New York',
     Status: 'active',
     StatusBg: '#03C9D7',
-    ProductImage: 'https://images.unsplash.com/photo-1582039325967-68b4f9804579?auto=format&fit=crop&w=50&q=80',
+    StudentImage: 'https://i.pravatar.cc/150?img=3',
   },
   {
-    OrderID: 893486,
-    CustomerName: 'Anika Viseer',
-    TotalAmount: 93.31,
-    OrderItems: 'Night Lamp',
+    EnrollmentID: 893486,
+    StudentName: 'Anika Viseer',
+    Price: 93.31,
+    CourseTitle: 'Python for Data Science',
     Location: 'Germany',
     Status: 'canceled',
     StatusBg: '#FF5C8E',
-    ProductImage: 'https://images.unsplash.com/photo-1507473888900-52e1adad54cd?auto=format&fit=crop&w=50&q=80',
+    StudentImage: 'https://i.pravatar.cc/150?img=4',
   },
   {
-    OrderID: 748975,
-    CustomerName: 'Miron Vitold',
-    TotalAmount: 23.99,
-    OrderItems: 'Healthcare Erbology',
+    EnrollmentID: 748975,
+    StudentName: 'Miron Vitold',
+    Price: 23.99,
+    CourseTitle: 'UI/UX Fundamentals',
     Location: 'Spain',
     Status: 'rejected',
     StatusBg: 'red',
-    ProductImage: 'https://images.unsplash.com/photo-1556228720-19de77d69e66?auto=format&fit=crop&w=50&q=80',
+    StudentImage: 'https://i.pravatar.cc/150?img=5',
   },
 ];
 
-export const customersGrid = [
+// RENAMED: customersGrid -> studentProgressGrid
+export const studentProgressGrid = [
   { type: 'checkbox', width: '50' },
-  { headerText: 'Name', field: 'CustomerName', width: '150', textAlign: 'Center' },
-  { field: 'ProjectName', headerText: 'Project Name', width: '150', textAlign: 'Center' },
+  { headerText: 'Student Name', field: 'StudentName', width: '150', textAlign: 'Center' },
+  { field: 'ActiveCourse', headerText: 'Active Course', width: '150', textAlign: 'Center' },
   { field: 'Status', headerText: 'Status', width: '130', textAlign: 'Center' },
-  { field: 'Weeks', headerText: 'Weeks', width: '100', format: 'C2', textAlign: 'Center' },
-  { field: 'Budget', headerText: 'Budget', width: '100', format: 'yMd', textAlign: 'Center' },
+  { field: 'Progress', headerText: 'Progress', width: '100', format: 'C2', textAlign: 'Center' },
+  { field: 'HoursSpent', headerText: 'Hours Spent', width: '100', format: 'yMd', textAlign: 'Center' },
   { field: 'Location', headerText: 'Location', width: '150', textAlign: 'Center' },
-  { field: 'CustomerID', headerText: 'Customer ID', width: '120', textAlign: 'Center', isPrimaryKey: true },
+  { field: 'StudentID', headerText: 'ID', width: '120', textAlign: 'Center', isPrimaryKey: true },
 ];
 
-export const customersData = [
+// RENAMED: customersData -> studentProgressData
+export const studentProgressData = [
   {
-    CustomerID: 1001,
-    CustomerName: 'Nirav Joshi',
-    CustomerEmail: 'nirav@gmail.com',
-    CustomerImage: 'https://i.pravatar.cc/150?img=1',
-    ProjectName: 'Hosting Press HTML',
+    StudentID: 1001,
+    StudentName: 'Nirav Joshi',
+    StudentEmail: 'nirav@gmail.com',
+    StudentImage: 'https://i.pravatar.cc/150?img=1',
+    ActiveCourse: 'React 18 Masterclass',
     Status: 'Active',
     StatusBg: '#8BE78B',
-    Weeks: '40',
-    Budget: '$2.4k',
+    Progress: '85%',
+    HoursSpent: '12h',
     Location: 'India',
   },
   {
-    CustomerID: 1002,
-    CustomerName: 'Sunil Joshi',
-    CustomerEmail: 'sunil@gmail.com',
-    ProjectName: 'Elite Admin',
+    StudentID: 1002,
+    StudentName: 'Sunil Joshi',
+    StudentEmail: 'sunil@gmail.com',
+    ActiveCourse: 'Node.js Backend',
     Status: 'Active',
-    CustomerImage: 'https://i.pravatar.cc/150?img=2',
+    StudentImage: 'https://i.pravatar.cc/150?img=2',
     StatusBg: '#8BE78B',
-    Weeks: '11',
-    Budget: '$3.9k',
+    Progress: '40%',
+    HoursSpent: '5h',
     Location: 'India',
   },
   {
-    CustomerID: 1003,
-    CustomerName: 'Andrew McDownland',
-    CustomerEmail: 'andrew@gmail.com',
-    ProjectName: 'Real Homes WP Theme',
+    StudentID: 1003,
+    StudentName: 'Andrew McDownland',
+    StudentEmail: 'andrew@gmail.com',
+    ActiveCourse: 'Docker & Kubernetes',
     Status: 'Pending',
-    CustomerImage: 'https://i.pravatar.cc/150?img=3',
+    StudentImage: 'https://i.pravatar.cc/150?img=3',
     StatusBg: '#FEC90F',
-    Weeks: '19',
-    Budget: '$24.5k',
+    Progress: '10%',
+    HoursSpent: '2h',
     Location: 'USA',
   },
 ];
 
-export const employeesGrid = [
-  { headerText: 'Employee', field: 'Name', width: '150', textAlign: 'Center' },
-  { field: 'Title', headerText: 'Designation', width: '170', textAlign: 'Center' },
+// RENAMED: employeesGrid -> instructorsGrid
+export const instructorsGrid = [
+  { headerText: 'Instructor', field: 'Name', width: '150', textAlign: 'Center' },
+  { field: 'Expertise', headerText: 'Expertise', width: '170', textAlign: 'Center' },
   { headerText: 'Country', field: 'Country', width: '120', textAlign: 'Center' },
-  { field: 'HireDate', headerText: 'Hire Date', width: '135', format: 'yMd', textAlign: 'Center' },
+  { field: 'HireDate', headerText: 'Joined Date', width: '135', format: 'yMd', textAlign: 'Center' },
   { field: 'ReportsTo', headerText: 'Reports To', width: '120', textAlign: 'Center' },
-  { field: 'EmployeeID', headerText: 'Employee ID', width: '125', textAlign: 'Center' },
+  { field: 'InstructorID', headerText: 'ID', width: '125', textAlign: 'Center' },
 ];
 
-export const employeesData = [
+// RENAMED: employeesData -> instructorsData
+export const instructorsData = [
   {
-    EmployeeID: 1,
+    InstructorID: 1,
     Name: 'Nancy Davolio',
-    Title: 'Sales Representative',
+    Expertise: 'Frontend Expert',
     HireDate: '01/02/2021',
     Country: 'USA',
-    ReportsTo: 'Carson',
+    ReportsTo: 'Admin',
     EmployeeImage: 'https://i.pravatar.cc/150?img=1',
   },
   {
-    EmployeeID: 2,
+    InstructorID: 2,
     Name: 'Nasimiyu Danai',
-    Title: 'Marketing Head',
+    Expertise: 'Cloud Architect',
     HireDate: '01/02/2021',
     Country: 'USA',
-    ReportsTo: 'Carson',
+    ReportsTo: 'Admin',
     EmployeeImage: 'https://i.pravatar.cc/150?img=2',
   },
   {
-    EmployeeID: 3,
+    InstructorID: 3,
     Name: 'Iulia Albu',
-    Title: 'HR',
+    Expertise: 'UI/UX Lead',
     HireDate: '01/02/2021',
     Country: 'USA',
-    ReportsTo: 'Carson',
+    ReportsTo: 'Admin',
     EmployeeImage: 'https://i.pravatar.cc/150?img=3',
   },
 ];
 
-// ------------------------------
-// APP DATA (Kanban, Calendar, Editor)
-// ------------------------------
+// ----------------------------------------------------------------------
+// 7. APP DATA (KANBAN, SCHEDULE)
+// ----------------------------------------------------------------------
 
 export const kanbanData = [
   {
     Id: 'Task 1',
-    Title: 'Task - 29001',
+    Title: 'Module 1: Intro to Hooks',
     Status: 'Open',
-    Summary: 'Analyze the new requirements gathered from the customer.',
-    Type: 'Story',
-    Priority: 'Low',
+    Summary: 'Script the intro video for useState and useEffect.',
+    Type: 'Scripting',
+    Priority: 'High',
     Tags: 'Analyze,Customer',
     Estimate: 3.5,
     Assignee: 'Nancy Davloio',
@@ -476,10 +506,10 @@ export const kanbanData = [
   },
   {
     Id: 'Task 2',
-    Title: 'Task - 29002',
+    Title: 'Module 2: Context API',
     Status: 'InProgress',
-    Summary: 'Improve application performance',
-    Type: 'Improvement',
+    Summary: 'Record screen capture for AuthContext setup.',
+    Type: 'Recording',
     Priority: 'Normal',
     Tags: 'Improvement',
     Estimate: 6,
@@ -490,10 +520,10 @@ export const kanbanData = [
   },
   {
     Id: 'Task 3',
-    Title: 'Task - 29003',
+    Title: 'Course Trailer',
     Status: 'Open',
-    Summary: 'Arrange a web meeting with the customer to get new requirements.',
-    Type: 'Others',
+    Summary: 'Edit the 2-minute promo video.',
+    Type: 'Editing',
     Priority: 'Critical',
     Tags: 'Meeting',
     Estimate: 5.5,
@@ -507,25 +537,25 @@ export const kanbanData = [
 export const scheduleData = [
   {
     Id: 1,
-    Subject: 'Explosion of Betelgeuse Star',
-    Location: 'Space Center USA',
+    Subject: 'React Live Session',
+    Location: 'Zoom Link',
     StartTime: '2024-01-10T04:00:00.000Z',
     EndTime: '2024-01-10T05:30:00.000Z',
     CategoryColor: '#1aaa55',
   },
   {
     Id: 2,
-    Subject: 'Thule Air Crash Report',
-    Location: 'Newyork City',
+    Subject: 'Q&A with Students',
+    Location: 'Discord Stage',
     StartTime: '2024-01-11T06:30:00.000Z',
     EndTime: '2024-01-11T08:30:00.000Z',
     CategoryColor: '#357cd2',
   },
 ];
 
-// ------------------------------
-// CHART DATA (Line, Sparkline, Stacked, Pie, Financial)
-// ------------------------------
+// ----------------------------------------------------------------------
+// 8. CHART DATA
+// ----------------------------------------------------------------------
 
 export const lineChartData = [
   [
@@ -558,9 +588,9 @@ export const lineChartData = [
 ];
 
 export const lineCustomSeries = [
-  { dataSource: lineChartData[0], xName: 'x', yName: 'y', name: 'Germany', width: '2', marker: { visible: true, width: 10, height: 10 }, type: 'Line' },
-  { dataSource: lineChartData[1], xName: 'x', yName: 'y', name: 'England', width: '2', marker: { visible: true, width: 10, height: 10 }, type: 'Line' },
-  { dataSource: lineChartData[2], xName: 'x', yName: 'y', name: 'India', width: '2', marker: { visible: true, width: 10, height: 10 }, type: 'Line' },
+  { dataSource: lineChartData[0], xName: 'x', yName: 'y', name: 'Course A Sales', width: '2', marker: { visible: true, width: 10, height: 10 }, type: 'Line' },
+  { dataSource: lineChartData[1], xName: 'x', yName: 'y', name: 'Course B Sales', width: '2', marker: { visible: true, width: 10, height: 10 }, type: 'Line' },
+  { dataSource: lineChartData[2], xName: 'x', yName: 'y', name: 'Course C Sales', width: '2', marker: { visible: true, width: 10, height: 10 }, type: 'Line' },
 ];
 
 export const areaChartData = [
@@ -591,9 +621,9 @@ export const areaChartData = [
 ];
 
 export const areaCustomSeries = [
-  { dataSource: areaChartData[0], xName: 'x', yName: 'y', name: 'USA', opacity: '0.8', type: 'SplineArea', width: '2' },
-  { dataSource: areaChartData[1], xName: 'x', yName: 'y', name: 'France', opacity: '0.8', type: 'SplineArea', width: '2' },
-  { dataSource: areaChartData[2], xName: 'x', yName: 'y', name: 'Germany', opacity: '0.8', type: 'SplineArea', width: '2' },
+  { dataSource: areaChartData[0], xName: 'x', yName: 'y', name: 'Traffic', opacity: '0.8', type: 'SplineArea', width: '2' },
+  { dataSource: areaChartData[1], xName: 'x', yName: 'y', name: 'Sales', opacity: '0.8', type: 'SplineArea', width: '2' },
+  { dataSource: areaChartData[2], xName: 'x', yName: 'y', name: 'Refunds', opacity: '0.8', type: 'SplineArea', width: '2' },
 ];
 
 export const barChartData = [
@@ -621,10 +651,10 @@ export const barCustomSeries = [
 ];
 
 export const pieChartData = [
-  { x: 'Labour', y: 18, text: '18%' },
-  { x: 'Legal', y: 8, text: '8%' },
-  { x: 'Production', y: 15, text: '15%' },
-  { x: 'License', y: 11, text: '11%' },
+  { x: 'Developers', y: 18, text: '18%' },
+  { x: 'Students', y: 8, text: '8%' },
+  { x: 'Designers', y: 15, text: '15%' },
+  { x: 'Managers', y: 11, text: '11%' },
   { x: 'Facilities', y: 18, text: '18%' },
   { x: 'Taxes', y: 14, text: '14%' },
   { x: 'Insurance', y: 16, text: '16%' },
@@ -666,7 +696,7 @@ export const stackedChartData = [
 ];
 
 export const stackedCustomSeries = [
-  { dataSource: stackedChartData[0], xName: 'x', yName: 'y', name: 'Budget', type: 'StackingColumn', background: 'blue' },
+  { dataSource: stackedChartData[0], xName: 'x', yName: 'y', name: 'Revenue', type: 'StackingColumn', background: 'blue' },
   { dataSource: stackedChartData[1], xName: 'x', yName: 'y', name: 'Expense', type: 'StackingColumn', background: 'red' },
 ];
 
@@ -711,17 +741,17 @@ export const sparklineAreaData = [
 ];
 
 export const PyramidData = [
-  { x: 'Sweet Treats', y: 120, text: '120 cal' },
-  { x: 'Milk, Youghnut, Cheese', y: 435, text: '435 cal' },
-  { x: 'Vegetables', y: 470, text: '470 cal' },
-  { x: 'Meat, Poultry, Fish', y: 475, text: '475 cal' },
-  { x: 'Fruits', y: 520, text: '520 cal' },
-  { x: 'Bread, Rice, Pasta', y: 930, text: '930 cal' },
+  { x: 'Video', y: 120, text: '120' },
+  { x: 'Quizzes', y: 435, text: '435' },
+  { x: 'Assignments', y: 470, text: '470' },
+  { x: 'Live', y: 475, text: '475' },
+  { x: 'Reading', y: 520, text: '520' },
+  { x: 'Labs', y: 930, text: '930' },
 ];
 
-// ------------------------------
-// CHART CONFIGURATIONS (X/Y Axis)
-// ------------------------------
+// ----------------------------------------------------------------------
+// 9. CHART CONFIGURATIONS
+// ----------------------------------------------------------------------
 
 export const areaPrimaryXAxis = {
   valueType: 'DateTime',

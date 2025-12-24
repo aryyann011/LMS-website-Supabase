@@ -44,6 +44,7 @@ const router = createBrowserRouter([
           // Note: No leading slashes here!
           {path : '', element : <Home/>},
           {path : 'mylearning', element : <StudentDashboard/>},
+          { path : 'courses', element : <Browse/>},
         ]
       },
       
