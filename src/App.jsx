@@ -18,13 +18,16 @@ import StudentSidebar from './Components/Student/StudenSidebar'
 function App() {
 
   const {isloginModalOpen, isSignupModalOpen, isSidebarOpen, user} = useAuth()
+  
   return (
     <div className='min-h-screen min-w-screen'>
       <div
-  className={`h-full w-full bg-linear-to-b from-slate-50 to-[#FFFFFF] overflow-y-hidden overflow-x-auto scrollbar-none ${
+  className={`h-screen w-screen bg-linear-to-b from-slate-50 to-[#FFFFFF] 
+  overflow-hidden ${
     isloginModalOpen || isSignupModalOpen ? "blur-sm" : ""
   }`}
 >
+
         <Navbar />
         <main>
           {/* {isSidebarOpen && user && user.metadata === 'teacher' ? <Sidebar/> : ""} */}
