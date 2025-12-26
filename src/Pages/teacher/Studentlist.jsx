@@ -8,7 +8,7 @@ import { Table, TableHeader, TableBody, TableRow, TableCell,
 
 const Studentlist = () => {
   return (
-    <div className='p-6'>
+    <div className='p-6 '>
       <h1 className='font-bold text-2xl'>All Students List</h1>
       <Table className="h-screen table-fixed w-full mt-5">
         <TableHeader>

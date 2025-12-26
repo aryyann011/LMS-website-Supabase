@@ -15,10 +15,12 @@ function Sidebar() {
 
   return (
     <div className={`
-      h-screen bg-white border-r
-      transform duration-300 ease-in-out
-      ${isSidebarOpen ? 'w-64' : 'w-0'}
+      fixed inset-y-0 left-0 z-50
+      w-64 bg-white border-r
+      transform transition-transform duration-300 ease-in-out
+      ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
     `}>
+
           <div className="h-full flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 pb-10">
             
             <div className="flex justify-between items-center p-4 border-b">

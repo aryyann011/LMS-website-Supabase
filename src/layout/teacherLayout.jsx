@@ -6,14 +6,21 @@ import Footer from '@/Components/Footer';
 
 function TeacherLayout() {
 
-    const {user, isLoading} = useAuth()
+    const {user, isLoading, isSidebarOpen} = useAuth()
     // const Navigate = useNavigate()
     if(isLoading) return <h1>Loading....</h1>
   return (
     (user?.user_metadata?.role === 'teacher') 
       ? (<div className='flex h-screen min-w-screen overflow-hidden'>
       <Sidebar/>
-      <div className="flex-1 w-full overflow-y-auto overflow-x-hidden transition-all duration-300">
+      <div
+        className={`
+          flex-1 w-full overflow-y-auto overflow-x-hidden
+          transition-all duration-300
+          ${isSidebarOpen ? 'md:ml-64' : 'md:ml-0'}
+        `}
+      >
+
         <Outlet />
         <Footer/>
       </div>
