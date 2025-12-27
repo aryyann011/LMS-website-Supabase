@@ -20,6 +20,7 @@ import EditCourse from './Pages/teacher/EditCourse.jsx'
 import StudentDashboard from './Pages/Student/Dashboard.jsx'
 import StudentLayout from './layout/StudentLayout.jsx'
 import Studentlist from './Pages/teacher/Studentlist'
+import Calendar from './Pages/teacher/Calendar'
 
 const router = createBrowserRouter([
   {
@@ -57,7 +58,8 @@ const router = createBrowserRouter([
           { path: 'addCourse', element: <AddCourse /> },
           { path: 'mycourse', element: <Mycourse /> },
           { path: 'edit-course/:courseId', element: <EditCourse /> },
-          {path : 'students', element : <Studentlist/>}
+          {path : 'students', element : <Studentlist/>},
+          {path : 'calendar', element : <Calendar/>}
         ]
       }
       //   ]
