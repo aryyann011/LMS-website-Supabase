@@ -21,6 +21,7 @@ import StudentDashboard from './Pages/Student/Dashboard.jsx'
 import StudentLayout from './layout/StudentLayout.jsx'
 import Studentlist from './Pages/teacher/Studentlist'
 import Calendar from './Pages/teacher/Apps/Calendar'
+import Kanban from './Pages/teacher/Apps/Kanban'
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,8 @@ const router = createBrowserRouter([
           { path: 'mycourse', element: <Mycourse /> },
           { path: 'edit-course/:courseId', element: <EditCourse /> },
           {path : 'students', element : <Studentlist/>},
-          {path : 'calendar', element : <Calendar/>}
+          {path : 'calendar', element : <Calendar/>},
+          {path : 'kanban', element : <Kanban/>}
         ]
       }
       //   ]
