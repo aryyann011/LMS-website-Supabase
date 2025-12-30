@@ -94,7 +94,7 @@ const Kanban = () => {
                             className={`
                               p-4 mb-3 rounded-xl bg-white dark:bg-gray-700 border border-transparent
                               hover:shadow-md transition-all
-                              ${snapshot.isDragging ? 'shadow-2xl ring-2 ring-blue-500 rotate-2 z-50' : 'shadow-sm'}
+                              ${snapshot.isDragging ? 'shadow-2xl ring-2 ring-blue-500 z-50' : 'shadow-sm'}
                             `}
                             style={provided.draggableProps.style} // REQUIRED for movement
                           >
@@ -107,7 +107,7 @@ const Kanban = () => {
                             
                             <div className="flex justify-between items-center mt-2">
                               <span className={`
-                                text-[10px] px-2 py-1 rounded-full text-white font-medium
+                                text-[10px] px-2 py-1 rounded-3xl text-white font-medium
                                 ${task.Priority === 'Critical' ? 'bg-red-500' : 
                                   task.Priority === 'High' ? 'bg-orange-400' : 
                                   task.Priority === 'Normal' ? 'bg-blue-400' : 'bg-gray-400'}
