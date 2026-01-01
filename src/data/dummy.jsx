@@ -61,10 +61,10 @@ export const sidebarLinks = [
   {
     title: "CHARTS",
     links: [
-      { name: "Course Revenue", path: "/teacher/line", icon: <TrendingUp/> },
+      { name: "New Students", path: "/teacher/line", icon: <TrendingUp/> },
       { name: "Monthly revenue", path: "/teacher/area", icon: <AreaChart/> },
       { name: "Students Progress", path: "/teacher/bar", icon: <BarChart3/>},
-      { name: "Pie", path: "/teacher/pie", icon: <PieChart/> },
+      { name: "Course Revenue", path: "/teacher/pie", icon: <PieChart/> },
       { name: "Financial", path: "/teacher/financial", icon: <CandlestickChart/> },
       { name: "Color Mapping", path: "/teacher/color-mapping", icon: <Layers/> },
       { name: "Pyramid", path: "/teacher/pyramid", icon: <Triangle/> },
@@ -793,18 +793,21 @@ export const pieChartData = [
   { name: 'Cyber Security', value: 8000 },
 ];
 
+export const financialChartData = [
+  { x: 'Jan', Income: 4500, Expense: 1200, Profit: 3300 },
+  { x: 'Feb', Income: 5200, Expense: 1500, Profit: 3700 },
+  { x: 'Mar', Income: 6100, Expense: 2100, Profit: 4000 },
+  { x: 'Apr', Income: 5800, Expense: 1800, Profit: 4000 },
+  { x: 'May', Income: 7500, Expense: 2500, Profit: 5000 },
+  { x: 'Jun', Income: 8200, Expense: 2800, Profit: 5400 },
+  { x: 'Jul', Income: 9500, Expense: 3200, Profit: 6300 },
+];
+
 export const contextMenuItems = [
   'AutoFit', 'AutoFitAll', 'SortAscending', 'SortDescending',
   'Copy', 'Edit', 'Delete', 'Save', 'Cancel',
   'PdfExport', 'ExcelExport', 'CsvExport',
   'FirstPage', 'PrevPage', 'LastPage', 'NextPage',
-];
-
-export const ecomPieChartData = [
-  { x: '2018', y: 18, text: '35%' },
-  { x: '2019', y: 18, text: '15%' },
-  { x: '2020', y: 18, text: '25%' },
-  { x: '2021', y: 18, text: '25%' },
 ];
 
 export const stackedChartData = [
@@ -855,15 +858,6 @@ export const stackedPrimaryYAxis = {
   minorTickLines: { width: 0 },
   labelFormat: '{value}',
 };
-
-export const financialChartData = [
-  { x: new Date('2017-01-01'), open: 120, high: 125, low: 118, close: 122, volume: 100000 },
-  { x: new Date('2017-01-02'), open: 122, high: 130, low: 120, close: 128, volume: 150000 },
-  { x: new Date('2017-01-03'), open: 128, high: 135, low: 125, close: 132, volume: 120000 },
-  { x: new Date('2017-01-04'), open: 132, high: 134, low: 128, close: 130, volume: 110000 },
-  { x: new Date('2017-01-05'), open: 130, high: 138, low: 129, close: 136, volume: 160000 },
-  { x: new Date('2017-01-06'), open: 136, high: 140, low: 135, close: 139, volume: 180000 },
-];
 
 export const sparklineAreaData = [
   { x: 1, yval: 2 },

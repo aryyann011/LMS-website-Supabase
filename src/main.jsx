@@ -27,6 +27,7 @@ import Lines from './Pages/teacher/Charts/Line'
 import Areas from './Pages/teacher/Charts/Area'
 import Bars from './Pages/teacher/Charts/Bar'
 import PiePage from './Pages/teacher/Charts/Pie'
+import Financial from './Pages/teacher/Charts/Financial'
 
 const router = createBrowserRouter([
   {
@@ -71,7 +72,8 @@ const router = createBrowserRouter([
           {path : 'line', element : <Lines/>},
           {path : 'area', element : <Areas/>},
           {path : 'bar', element : <Bars/>},
-          {path : 'pie', element : <PiePage/>}
+          {path : 'pie', element : <PiePage/>},
+          {path : 'financial', element: <Financial/>}
         ]
       }
       //   ]
