@@ -24,6 +24,7 @@ import Calendar from './Pages/teacher/Apps/Calendar'
 import Kanban from './Pages/teacher/Apps/Kanban'
 import CourseEditor from './Pages/teacher/Apps/Editor'
 import Lines from './Pages/teacher/Charts/Line'
+import Areas from './Pages/teacher/Charts/Area'
 
 const router = createBrowserRouter([
   {
@@ -65,7 +66,8 @@ const router = createBrowserRouter([
           {path : 'calendar', element : <Calendar/>},
           {path : 'kanban', element : <Kanban/>},
           {path : 'editor', element : <CourseEditor/>},
-          {path : 'line', element : <Lines/>}
+          {path : 'line', element : <Lines/>},
+          {path : 'area', element : <Areas/>}
         ]
       }
       //   ]

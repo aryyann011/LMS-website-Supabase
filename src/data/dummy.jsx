@@ -61,8 +61,8 @@ export const sidebarLinks = [
   {
     title: "CHARTS",
     links: [
-      { name: "Line", path: "/teacher/line", icon: <TrendingUp/> },
-      { name: "Area", path: "/teacher/area", icon: <AreaChart/> },
+      { name: "Course Revenue", path: "/teacher/line", icon: <TrendingUp/> },
+      { name: "Monthly revenue", path: "/teacher/area", icon: <AreaChart/> },
       { name: "Bar", path: "/teacher/bar", icon: <BarChart3/>},
       { name: "Pie", path: "/teacher/pie", icon: <PieChart/> },
       { name: "Financial", path: "/teacher/financial", icon: <CandlestickChart/> },
@@ -768,36 +768,13 @@ export const lineChartData = [
 ];
 
 export const areaChartData = [
-  [
-    { x: new Date(2002, 0, 1), y: 2.2 },
-    { x: new Date(2003, 0, 1), y: 3.4 },
-    { x: new Date(2004, 0, 1), y: 2.8 },
-    { x: new Date(2005, 0, 1), y: 1.6 },
-    { x: new Date(2006, 0, 1), y: 2.3 },
-    { x: new Date(2007, 0, 1), y: 2.5 },
-  ],
-  [
-    { x: new Date(2002, 0, 1), y: 2 },
-    { x: new Date(2003, 0, 1), y: 1.7 },
-    { x: new Date(2004, 0, 1), y: 1.8 },
-    { x: new Date(2005, 0, 1), y: 2.1 },
-    { x: new Date(2006, 0, 1), y: 2.3 },
-    { x: new Date(2007, 0, 1), y: 1.7 },
-  ],
-  [
-    { x: new Date(2002, 0, 1), y: 0.8 },
-    { x: new Date(2003, 0, 1), y: 1.3 },
-    { x: new Date(2004, 0, 1), y: 1.1 },
-    { x: new Date(2005, 0, 1), y: 1.6 },
-    { x: new Date(2006, 0, 1), y: 2 },
-    { x: new Date(2007, 0, 1), y: 1.7 },
-  ],
-];
-
-export const areaCustomSeries = [
-  { dataSource: areaChartData[0], xName: 'x', yName: 'y', name: 'Traffic', opacity: '0.8', type: 'SplineArea', width: '2' },
-  { dataSource: areaChartData[1], xName: 'x', yName: 'y', name: 'Sales', opacity: '0.8', type: 'SplineArea', width: '2' },
-  { dataSource: areaChartData[2], xName: 'x', yName: 'y', name: 'Refunds', opacity: '0.8', type: 'SplineArea', width: '2' },
+  { x: 'Jan', USA: 4.0, France: 2.0, Germany: 2.8 },
+  { x: 'Feb', USA: 3.0, France: 1.5, Germany: 2.2 },
+  { x: 'Mar', USA: 2.0, France: 2.5, Germany: 3.5 },
+  { x: 'Apr', USA: 2.8, France: 3.8, Germany: 1.8 },
+  { x: 'May', USA: 1.9, France: 2.2, Germany: 3.1 },
+  { x: 'Jun', USA: 2.4, France: 3.5, Germany: 2.5 },
+  { x: 'Jul', USA: 3.2, France: 2.8, Germany: 2.2 },
 ];
 
 export const barChartData = [
