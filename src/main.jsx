@@ -25,6 +25,8 @@ import Kanban from './Pages/teacher/Apps/Kanban'
 import CourseEditor from './Pages/teacher/Apps/Editor'
 import Lines from './Pages/teacher/Charts/Line'
 import Areas from './Pages/teacher/Charts/Area'
+import Bars from './Pages/teacher/Charts/Bar'
+import PiePage from './Pages/teacher/Charts/Pie'
 
 const router = createBrowserRouter([
   {
@@ -67,7 +69,9 @@ const router = createBrowserRouter([
           {path : 'kanban', element : <Kanban/>},
           {path : 'editor', element : <CourseEditor/>},
           {path : 'line', element : <Lines/>},
-          {path : 'area', element : <Areas/>}
+          {path : 'area', element : <Areas/>},
+          {path : 'bar', element : <Bars/>},
+          {path : 'pie', element : <PiePage/>}
         ]
       }
       //   ]

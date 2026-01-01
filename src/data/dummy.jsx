@@ -63,7 +63,7 @@ export const sidebarLinks = [
     links: [
       { name: "Course Revenue", path: "/teacher/line", icon: <TrendingUp/> },
       { name: "Monthly revenue", path: "/teacher/area", icon: <AreaChart/> },
-      { name: "Bar", path: "/teacher/bar", icon: <BarChart3/>},
+      { name: "Students Progress", path: "/teacher/bar", icon: <BarChart3/>},
       { name: "Pie", path: "/teacher/pie", icon: <PieChart/> },
       { name: "Financial", path: "/teacher/financial", icon: <CandlestickChart/> },
       { name: "Color Mapping", path: "/teacher/color-mapping", icon: <Layers/> },
@@ -758,13 +758,13 @@ export const scheduleData = [
 // ----------------------------------------------------------------------
 
 export const lineChartData = [
-  { x: '2005', ReactJS: 21, Python: 28, NodeJS: 10 },
-  { x: '2006', ReactJS: 24, Python: 44, NodeJS: 20 },
-  { x: '2007', ReactJS: 36, Python: 48, NodeJS: 30 },
-  { x: '2008', ReactJS: 38, Python: 50, NodeJS: 39 },
-  { x: '2009', ReactJS: 54, Python: 66, NodeJS: 50 },
-  { x: '2010', ReactJS: 57, Python: 78, NodeJS: 70 },
-  { x: '2011', ReactJS: 70, Python: 84, NodeJS: 100 },
+  { x: 'Jan', ReactJS: 42, Python: 25, NodeJS: 10 },
+  { x: 'Feb', ReactJS: 48, Python: 30, NodeJS: 18 },
+  { x: 'Mar', ReactJS: 55, Python: 45, NodeJS: 24 },
+  { x: 'Apr', ReactJS: 51, Python: 50, NodeJS: 32 },
+  { x: 'May', ReactJS: 65, Python: 58, NodeJS: 45 },
+  { x: 'Jun', ReactJS: 78, Python: 70, NodeJS: 60 },
+  { x: 'Jul', ReactJS: 92, Python: 85, NodeJS: 75 },
 ];
 
 export const areaChartData = [
@@ -778,37 +778,19 @@ export const areaChartData = [
 ];
 
 export const barChartData = [
-  [
-    { x: 'USA', y: 46 },
-    { x: 'GBR', y: 27 },
-    { x: 'CHN', y: 26 },
-  ],
-  [
-    { x: 'USA', y: 37 },
-    { x: 'GBR', y: 23 },
-    { x: 'CHN', y: 18 },
-  ],
-  [
-    { x: 'USA', y: 38 },
-    { x: 'GBR', y: 17 },
-    { x: 'CHN', y: 26 },
-  ],
-];
-
-export const barCustomSeries = [
-  { dataSource: barChartData[0], xName: 'x', yName: 'y', name: 'Gold', type: 'Column', marker: { dataLabel: { visible: true, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } } },
-  { dataSource: barChartData[1], xName: 'x', yName: 'y', name: 'Silver', type: 'Column', marker: { dataLabel: { visible: true, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } } },
-  { dataSource: barChartData[2], xName: 'x', yName: 'y', name: 'Bronze', type: 'Column', marker: { dataLabel: { visible: true, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } } },
+  { x: 'React 101', Active: 45, Completed: 32, Dropped: 4 },
+  { x: 'Node Backend', Active: 28, Completed: 15, Dropped: 8 },
+  { x: 'UI/UX Design', Active: 56, Completed: 40, Dropped: 2 },
+  { x: 'Python Basics', Active: 35, Completed: 25, Dropped: 10 },
+  { x: 'Adv. Algorithms', Active: 12, Completed: 8, Dropped: 15 },
 ];
 
 export const pieChartData = [
-  { x: 'Developers', y: 18, text: '18%' },
-  { x: 'Students', y: 8, text: '8%' },
-  { x: 'Designers', y: 15, text: '15%' },
-  { x: 'Managers', y: 11, text: '11%' },
-  { x: 'Facilities', y: 18, text: '18%' },
-  { x: 'Taxes', y: 14, text: '14%' },
-  { x: 'Insurance', y: 16, text: '16%' },
+  { name: 'Web Development', value: 45000 },
+  { name: 'UI/UX Design', value: 28000 },
+  { name: 'Data Science', value: 15000 },
+  { name: 'Mobile Apps', value: 12000 },
+  { name: 'Cyber Security', value: 8000 },
 ];
 
 export const contextMenuItems = [

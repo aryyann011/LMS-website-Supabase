@@ -34,12 +34,17 @@ const Areas = () => {
             </defs>
 
             <XAxis dataKey="x" stroke="#6b7280" />
-            <YAxis stroke="#6b7280" />
-            <CartesianGrid strokeDasharray="3 3" className="opacity-50" />
-            
-            <Tooltip 
-              contentStyle={{ backgroundColor: '#fff', borderRadius: '10px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+            <YAxis 
+            stroke="#6b7280" 
+            tick={{ fill: '#6b7280' }}
+            tickFormatter={(value) => `$${value}M`} 
             />
+
+            <Tooltip 
+            formatter={(value) => [`$${value}M`, "Revenue"]}
+            contentStyle={{ backgroundColor: '#fff', borderRadius: '10px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+            />
+            <CartesianGrid strokeDasharray="3 3" className="opacity-50" />
 
             <Legend verticalAlign="bottom" height={36}/>
             <Area 
