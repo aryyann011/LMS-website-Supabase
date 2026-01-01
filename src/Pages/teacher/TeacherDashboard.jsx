@@ -61,7 +61,7 @@ function Dashboard() {
                     {courses && courses.slice(0, 5).map((course) => (
                         <tr key={course.id} className="hover:bg-gray-50 transition">
                             <td className="p-4 flex items-center gap-3">
-                                <img src={course.imageUrl} alt="" className="h-10 w-16 object-cover rounded bg-gray-200" />
+                                <img src={course.imgUrl} alt="" className="h-10 w-16 object-cover rounded bg-gray-200" />
                                 <span className="font-medium truncate max-w-xs">{course.title}</span>
                             </td>
                             <td className="p-4">${course.price}</td>

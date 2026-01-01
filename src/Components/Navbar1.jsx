@@ -5,17 +5,14 @@ import { Authprovider, useAuth } from "../Context/Authcontext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoReorderThreeOutline } from "react-icons/io5";
+import { Bell, Menu, ShoppingCart, MessageCircle, User } from "lucide-react";
 
 function Navbar(){
 
     const [islogged, setIslogged] = useState(false)
-    const {user, logout, OpenloginModal, OpenSignupModal, toggleSidebar} = useAuth()
-    const navigate = useNavigate()
+    const {user, logout, OpenloginModal, OpenSignupModal, toggleSidebar, handleClick} = useAuth()
 
-    const logoutUser = () => {
-        logout()
-        navigate('/')
-    }
+    const navigate = useNavigate()
 
     const getHomePath = () => {
       if (!user) return "/"; 
@@ -53,18 +50,12 @@ function Navbar(){
         <div className="flex items-center gap-4">
           {user ? (
             <>
-              {user.user_metadata?.role === "teacher" && (
-                <Link to="teacher/addCourse" className="font-medium">
-                  Add Course
-                </Link>
-              )}
-
-              <button
-                onClick={logoutUser}
-                className="px-4 py-1.5 rounded-2xl bg-blue-600 text-white text-sm"
-              >
-                Logout
-              </button>
+              <div className="flex justify-around gap-6">
+                {(user?.user_metadata?.role === 'student') ? <ShoppingCart onClick={() => handleClick("cart")}/> : ""}
+                {(user?.user_metadata?.role === 'teacher') ? <MessageCircle onClick={() => handleClick("chat")}/> : ""}
+                <Bell onClick={() => handleClick("notifications")}/>
+                <User onClick={() => handleClick("profile")}/>
+              </div>
             </>
           ) : (
             <>

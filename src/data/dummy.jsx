@@ -3,8 +3,9 @@ import { HiCurrencyDollar } from "react-icons/hi";
 import { BsShieldFillCheck } from "react-icons/bs";
 import { TfiCreditCard } from "react-icons/tfi";
 import { ShoppingBag, ShoppingCart, Palette, FileEdit, Kanban, CalendarDays, UserCheck, Users, AlignVerticalSpaceAround,
-  Triangle, Layers, CandlestickChart, PieChart, BarChart3, AreaChart, TrendingUp, BookOpen } from 'lucide-react';
-
+  Triangle, Layers, CandlestickChart, PieChart, BarChart3, AreaChart, TrendingUp, BookOpen, Calendar } from 'lucide-react';
+import { BsShield, BsChatLeft} from 'react-icons/bs';
+import { FiStar } from 'react-icons/fi';
 // ----------------------------------------------------------------------
 // 1. HELPER COMPONENTS
 // ----------------------------------------------------------------------
@@ -71,61 +72,65 @@ export const sidebarLinks = [
   },
 ];
 
-// ----------------------------------------------------------------------
-// 3. USER PROFILE
-// ----------------------------------------------------------------------
-
-export const userProfileData = {
-  name: "Alex Johnson",
-  email: "alex.teacher@xdemy.com",
-  role: "Senior Instructor",
-  avatar: "https://i.pravatar.cc/150?img=12",
-  icon: "User",
+export const teacherProfileData = {
+  name: "Sarah Wilson",
+  email: "sarah.wilson@xdemy.com",
+  role: "Lead Instructor",
+  avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80", 
+  desc: "Computer Science Dept.",
 };
 
-export const userProfile = [
+export const teacherUserProfile = [
   {
-    icon: <HiCurrencyDollar />,
+    icon: <BsShield />,
     title: 'My Profile',
     desc: 'Account Settings',
     iconColor: '#03C9D7',
     iconBg: '#E5FAFB',
   },
   {
-    icon: <BsShieldFillCheck />,
-    title: 'My Inbox',
+    icon: <BsChatLeft />,
+    title: 'Inbox',
     desc: 'Messages & Emails',
     iconColor: 'rgb(0, 194, 146)',
     iconBg: 'rgb(235, 250, 242)',
   },
   {
-    icon: <TfiCreditCard />,
-    title: 'My Tasks',
-    desc: 'To-do and Daily Tasks',
+    icon: <Calendar />, 
+    title: 'Class Schedule',
+    desc: 'Upcoming Lectures',
     iconColor: 'rgb(255, 244, 229)',
     iconBg: 'rgb(254, 201, 15)',
   },
 ];
 
-export const userProfileOptions = [
+export const studentProfileData = {
+  name: "Michael Chen",
+  email: "michael.c@student.xdemy.com",
+  role: "Student",
+  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80",
+  desc: "Enrolled: Web Development",
+};
+
+export const studentUserProfile = [
   {
-    icon: <HiCurrencyDollar />,
+    icon: <BsShield />,
     title: 'My Profile',
     desc: 'Account Settings',
     iconColor: '#03C9D7',
     iconBg: '#E5FAFB',
   },
   {
-    icon: <BsShieldFillCheck />,
-    title: 'My Inbox',
-    desc: 'Messages & Emails',
+    icon: <BsChatLeft />,
+    title: 'Inbox',
+    desc: 'Messages & Queries',
     iconColor: 'rgb(0, 194, 146)',
     iconBg: 'rgb(235, 250, 242)',
   },
   {
-    icon: <TfiCreditCard />,
-    title: 'My Tasks',
-    desc: 'To-do and Daily Tasks',
+    icon: <FiStar />, 
+    title: 'My Grades',
+    desc: 'Report Card & Results',
     iconColor: 'rgb(255, 244, 229)',
     iconBg: 'rgb(254, 201, 15)',
   },

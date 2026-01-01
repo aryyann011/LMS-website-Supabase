@@ -4,6 +4,13 @@ import supabaseService from "../Auth/SupabaseService";
 
 const Authcontext = createContext()
 
+const initialState = {
+    chat: false,
+    cart: false,
+    notifications: false,
+    profile: false,
+};
+
 export function Authprovider({children}){
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
@@ -28,17 +35,36 @@ export function Authprovider({children}){
             return listener.unsubscribe()
         }
     }, [])
+
     const [isloginModalOpen, setIsloginMoalOpen] = useState(false)
     const [isSignupModalOpen, setIsSignupModalOpen] = useState(false)
+    const [isClicked, setIsClicked] = useState(initialState);
+    const [screenSize, setScreenSize] = useState(undefined);
+
+    const handleClick = (clicked) => {
+        setIsClicked((prev) => ({
+        ...initialState,
+        [clicked]: !prev[clicked],
+        }));
+    };
+    const AllOff = () => {
+        setIsClicked(initialState)
+    }
 
     const [isSidebarOpen, setIsSidebaropen] = useState(false)
     const value = {
         user,
         isLoading,
+        isClicked,
+        setIsClicked,
+        handleClick,
         signup: supabaseService.createAccount,
         login: supabaseService.login,
         logout: supabaseService.logout,
         loginWithGoogle: supabaseService.loginWithGoogle,
+        handleClick,
+        AllOff,
+
 
         isloginModalOpen,
         OpenloginModal : () => setIsloginMoalOpen(true),
