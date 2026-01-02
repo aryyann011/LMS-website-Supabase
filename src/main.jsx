@@ -30,6 +30,7 @@ import PiePage from './Pages/teacher/Charts/Pie'
 import Financial from './Pages/teacher/Charts/Financial'
 import ColorMapping from './Pages/teacher/Charts/ColorMapping'
 import Pyramid from './Pages/teacher/Charts/Pyramid'
+import RoleRedirect from './Routes/RoleRedirect'
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,15 @@ const router = createBrowserRouter([
     children : [
       {
         path : '',
-        element : <Home/>
+        element : <RoleRedirect/>
+      },
+      {
+        path: 'home',
+        element: <RoleRedirect />
+      },
+      {
+        path: 'landing',
+        element: <Home />
       },
       {
         path : 'CourseDetail/:courseId',
@@ -50,9 +59,10 @@ const router = createBrowserRouter([
       },
       {
         path : 'student',
-        element: <StudentLayout />,
+        element: 
+          <StudentLayout />,
         children: [
-          {path : '', element : <Home/>},
+          {path : 'home', element : <Home/>},
           {path : 'mylearning', element : <StudentDashboard/>},
           {path : 'courses', element : <Browse/>},
           {path : 'CourseDetail/:courseId', element : <CourseDetail/>}
@@ -61,7 +71,9 @@ const router = createBrowserRouter([
       
       {
         path: 'teacher',
-        element: <TeacherLayout />,
+        element: (
+          <TeacherLayout />
+        ),
         children: [
           {path : '', element : <Navigate to="dashboard" replace/>},
           { path: 'dashboard', element: <Dashboard /> }, 

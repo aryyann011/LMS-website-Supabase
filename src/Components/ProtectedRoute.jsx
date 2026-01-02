@@ -1,17 +1,24 @@
-import React from 'react'
-import { useAuth } from '../Context/Authcontext'
-import { Outlet, Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../Context/Authcontext";
 
-function ProtectedRoute() {
+const ProtectedRoute = () => {
+  const { user, loading } = useAuth();
 
-    const {user, isLoading} = useAuth()
-    // const Navigate = useNavigate()
-    if(isLoading) return <h1>Loading....</h1>
-  return (
-    (user?.user_metadata?.role === 'teacher') 
-      ? <Outlet />  
-      : <Navigate to="/" replace /> 
-  )
-}
+  if (loading) return null; // or loader
 
-export default ProtectedRoute
+  if (!user) return <Navigate to="/" replace />;
+
+  const role = user.user_metadata?.role;
+
+  if (role === "teacher") {
+    return <Navigate to="/teacher/dashboard" replace />;
+  }
+
+  if (role === "student") {
+    return <Navigate to="/student" replace />;
+  }
+
+  return <Navigate to="/" replace />;
+};
+
+export default ProtectedRoute;

@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../conf/conf";
 import supabaseService from "../Auth/SupabaseService";
+import { useNavigate } from "react-router-dom";
 
 const Authcontext = createContext()
-
 const initialState = {
     chat: false,
     cart: false,

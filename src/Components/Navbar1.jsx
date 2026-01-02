@@ -15,7 +15,7 @@ function Navbar(){
     const navigate = useNavigate()
 
     const getHomePath = () => {
-      if (!user) return "/"; 
+      if (!user) return "/home"; 
       
       const role = user.user_metadata?.role;
       

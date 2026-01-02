@@ -25,7 +25,7 @@ function TeacherLayout() {
         <Footer/>
       </div>
     </div> ) 
-      : (<Navigate to="/" replace /> )
+      : (<Navigate to="/home" replace /> )
   )
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { data, Link, useNavigate } from "react-router-dom";
+import { data, Link, replace, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../Context/Authcontext";
 import { useState } from "react";
@@ -22,13 +22,7 @@ function Login(){
             if(session){
                 closeloginModal()
 
-                const role = session.user?.user_metadata?.role
-
-                if (role === 'student') {
-                    navigate('/student'); // Leading slash is better here
-                } else {
-                    navigate('/teacher/dashboard');
-                }
+                navigate('/home', { replace: true })
             }
 
         }

@@ -19,7 +19,7 @@ console.log("Role found:", user?.user_metadata?.role);
             <Outlet />
         </div>
         </div>  )
-        : (<Navigate to="/" replace /> )}
+        : (<Navigate to="/home" replace /> )}
     </div>
   )
 }
