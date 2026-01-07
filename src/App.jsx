@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="w-full">
       <div
-  className={`w-full bg-linear-to-b from-slate-50 to-[#FFFFFF] ${
+  className={`w-full bg-linear-to-b from-[#E6FFFF] to-[#FFFFFF] ${
     isloginModalOpen || isSignupModalOpen ? "blur-sm" : ""
   }`}
 >

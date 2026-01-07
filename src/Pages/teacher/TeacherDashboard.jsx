@@ -18,7 +18,7 @@ function Dashboard() {
     : 0;
 
   return (
-    <div className="w-full p-6 bg-gray-50 min-h-screen">
+    <div className="w-full p-6 bg-linear-to-b from-[#E6FFFF] to-[#FFFFFF] min-h-screen">
       
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Teacher Dashboard</h1>
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useAddCoursesMutation } from "../store/apiSlice";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -7,113 +7,124 @@ import { uploadCourseImage } from "../Services/storageService";
 import { useAuth } from "../Context/Authcontext";
 
 function AddCourse() {
+  const navigate = useNavigate();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const [addCourses, { isLoading, isError, isSuccess, error: mutationError }] = useAddCoursesMutation();
+  const { user } = useAuth();
 
-    const navigate = useNavigate()
-    const {register, handleSubmit, formState : errors, reset} = useForm()
-    const [addCourses, {isLoading, isError, isSuccess, error: mutationError}] = useAddCoursesMutation()
-    const {user} = useAuth()
-
-    useEffect(() => {
-      if(isSuccess){
-        toast.success("Course Added Succesfully!")
-        reset();
-        navigate('teacher/mycourse')
-      }
-      if(isError){
-        const message = mutationError?.data?.message || "Failed to add course. Please try again.";
-        toast.error(message)
-      }
-    }, [isError, isSuccess, isLoading])
-
-    const AddInfo = async (data) => {
-        try{
-          const imageFile = data.image[0]
-          let imageUrl = null
-          if(imageFile){
-            toast.info('uploading image....')
-            imageUrl = await uploadCourseImage(imageFile);
-            toast.success('image uloaded succesfully')
-          }
-
-          const newCourseInfo = {
-            title : data.title,
-            description : data.description,
-            price : data.price,
-            imgUrl : imageUrl,
-            user_id : user.id
-          }
-
-          await addCourses(newCourseInfo).unwrap()
-        }
-        catch(error){
-            console.log("failed to add course :" , error)
-            toast.error('failed to add')
-        }
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Course Added Successfully!");
+      reset();
+      navigate('/teacher/mycourse'); // Ensure correct path
     }
+    if (isError) {
+      const message = mutationError?.data?.message || "Failed to add course. Please try again.";
+      toast.error(message);
+    }
+  }, [isError, isSuccess, isLoading, navigate, mutationError, reset]);
+
+  const AddInfo = async (data) => {
+    try {
+      const imageFile = data.image[0];
+      let imageUrl = null;
+      if (imageFile) {
+        toast.info('Uploading image...');
+        imageUrl = await uploadCourseImage(imageFile);
+        toast.success('Image uploaded successfully');
+      }
+
+      const newCourseInfo = {
+        title: data.title,
+        description: data.description,
+        price: data.price,
+        imgUrl: imageUrl,
+        user_id: user.id
+      };
+
+      await addCourses(newCourseInfo).unwrap();
+    } catch (error) {
+      console.log("Failed to add course:", error);
+      toast.error('Failed to add course');
+    }
+  };
 
   return (
-    <form onSubmit={handleSubmit(AddInfo)} className="flex flex-col items-center gap-6 max-w-3xl">
-      
-      <div className="w-[50%] flex flex-col gap-2">
-        <label htmlFor="title" className="font-semibold">Title</label>
-        <input
-            type="text"
-            id="title"
-            className="w-full p-2 border"
-            placeholder="Enter the title of the course"
-            {...register("title", { required : true })}
-        />
-        {errors.title && <span className="text-red-500 text-sm">{errors.title.message}</span>}
+    <div className="bg-linear-to-b from-[#E6FFFF] to-[#FFFFFF] flex justify-center items-center">
+      <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md border border-gray-200">
+        
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Add New Course</h2>
+        
         {isError && (
-          <div className="text-red-600 bg-red-100 p-3 rounded">
-            Failed to add course. Please try again.
+          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded text-sm text-center">
+            {mutationError?.data?.message || "Failed to add course. Please try again."}
           </div>
         )}
-      </div>
 
-      <div className="w-[50%] flex flex-col gap-2">
-        <label htmlFor="description" className="font-semibold">Description</label>
-        <input
-          type="text"
-          id="description"
-          className="w-full p-2 border"
-          placeholder="Give the description of the course"
-          {...register("description", { required : true })}
-        />
-        {errors.description && <span className="text-red-500 text-sm">{errors.description.message}</span>}
-      </div>
+        <form onSubmit={handleSubmit(AddInfo)} className="flex flex-col gap-5">
+          
+          <div className="flex flex-col gap-1">
+            <label htmlFor="title" className="font-semibold text-gray-700">Course Title</label>
+            <input
+              type="text"
+              id="title"
+              className={`w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${errors.title ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="e.g. React for Beginners"
+              {...register("title", { required: "Title is required" })}
+            />
+            {errors.title && <span className="text-red-500 text-sm mt-1">{errors.title.message}</span>}
+          </div>
 
-      <div className="w-[50%] flex flex-col gap-2">
-        <label htmlFor="price">Course Price</label>
-        <input
-          type="text"
-          id="price"
-          className="w-full p-2 border"
-          placeholder="Enter Price"
-          {...register("price", { required : true })}
-        />
-        {errors.price && <span className="text-red-500 text-sm">{errors.price.message}</span>}
-      </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="description" className="font-semibold text-gray-700">Description</label>
+            <textarea
+              id="description"
+              rows="3"
+              className={`w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${errors.description ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="Brief overview of the course content..."
+              {...register("description", { required: "Description is required" })}
+            />
+            {errors.description && <span className="text-red-500 text-sm mt-1">{errors.description.message}</span>}
+          </div>
 
-      <div className="w-[50%] flex items-center gap-3">
-        <label className="font-semibold whitespace-nowrap">Upload an Image:</label>
-        <input
-          type="file"
-          accept="image/*"
-          className="flex-1 border p-2 rounded"
-          {...register("image", { required : true })}
-        />
-        {errors.image && <span className="text-red-500 text-sm">{errors.image.message}</span>}
-      </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="price" className="font-semibold text-gray-700">Price ($)</label>
+            <input
+              type="number"
+              id="price"
+              className={`w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${errors.price ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="e.g. 49.99"
+              {...register("price", { required: "Price is required" })}
+            />
+            {errors.price && <span className="text-red-500 text-sm mt-1">{errors.price.message}</span>}
+          </div>
 
-      <div className="w-[50%] flex justify-end">
-        <button type="submit" className="px-6 py-2 bg-[#2563EB] text-white">
-          {isLoading ? "Submitting..." : "Add Course"}
-        </button>
-      </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="image" className="font-semibold text-gray-700">Course Thumbnail</label>
+            <input
+              type="file"
+              id="image"
+              accept="image/*"
+              className="w-full p-2 border border-gray-300 rounded bg-gray-50 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+              {...register("image", { required: "Image is required" })}
+            />
+            {errors.image && <span className="text-red-500 text-sm mt-1">{errors.image.message}</span>}
+          </div>
 
-    </form>
-  )
+          <div className="mt-4">
+            <button 
+              type="submit" 
+              disabled={isLoading}
+              className={`w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded shadow transition duration-200 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+            >
+              {isLoading ? "Creating Course..." : "Create Course"}
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default AddCourse;

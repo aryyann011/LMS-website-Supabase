@@ -1,27 +1,23 @@
 import React, { useEffect } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import SectionManager from '../../Components/SectionManager';
 import { 
   useGetCourseDetailQuery, 
   useUpdateCourseMutation,
-  useGetChapterForSectionQuery,
-  useGetSectionsForCourseQuery,
   useDeleteCourseMutation
 } from '../../store/apiSlice';
 import { uploadCourseImage } from '../../Services/storageService';
-import { useNavigate } from 'react-router-dom';
 
 function EditCourse() {
-
   const { courseId } = useParams(); 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   
-  const [deleteCourse, {isLoading : isDeleting}] = useDeleteCourseMutation()
+  const [deleteCourse, { isLoading: isDeleting }] = useDeleteCourseMutation();
   const [updateCourse, { isLoading: isUpdating }] = useUpdateCourseMutation();
-  const { data: course, isLoading : isCourseLoading } = useGetCourseDetailQuery(courseId);
+  const { data: course, isLoading: isCourseLoading } = useGetCourseDetailQuery(courseId);
 
   useEffect(() => {
     if (course) {
@@ -34,112 +30,148 @@ function EditCourse() {
   }, [course, reset]);
 
   const onSaveDetails = async (data) => {
-    try{
-      const imageFile = data.image[0]
-      let imageUrl = null
-      if(imageFile){
-        toast.info('uploading image....')
+    try {
+      const imageFile = data.image[0];
+      let imageUrl = course.imgUrl; // Default to existing image
+      
+      if (imageFile) {
+        toast.info('Uploading new image...');
         imageUrl = await uploadCourseImage(imageFile);
-        toast.success('image uloaded succesfully')
+        toast.success('Image uploaded successfully');
       }
 
       const newCourseInfo = {
         id: courseId,
-        title : data.title,
-        description : data.description,
-        price : data.price,
-        imgUrl : imageUrl,
-      }
+        title: data.title,
+        description: data.description,
+        price: data.price,
+        imgUrl: imageUrl,
+      };
 
-      await updateCourse(newCourseInfo).unwrap()
-    }
-    catch(error){
-        console.log("failed to add course :" , error)
-        toast.error('failed to add')
+      await updateCourse(newCourseInfo).unwrap();
+      toast.success('Course updated successfully');
+    } catch (error) {
+      console.log("Failed to update course:", error);
+      toast.error('Failed to update course');
     }
   };
 
   const deletethecourse = async () => {
-      try {
-        const {data, error} = await deleteCourse(courseId)
+    if(!window.confirm("Are you sure you want to delete this course? This action cannot be undone.")) return;
+    
+    try {
+      await deleteCourse(courseId).unwrap();
+      toast.success('Successfully deleted');
+      navigate('/teacher/mycourse');
+    } catch (error) {
+      console.log("Failed to delete course:", error);
+      toast.error('Failed to delete');
+    }
+  };
 
-        if(error) throw error
-        toast.success('succesfully deleted')
-        navigate('teacher/mycourse')
-
-      } catch (error) {
-        console.log("failed to delete course :" , error)
-        toast.error('failed to delete')
-      }
-  }
-
-  if (isCourseLoading) return <div>Loading course data...</div>;
+  if (isCourseLoading) return <div className="min-h-screen flex items-center justify-center">Loading course data...</div>;
 
   return (
-    <div className='w-full flex flex-row m-4'>
-      <div className='w-1/2 flex flex-col m-2'>
-        <h1 className='font-bold text-2xl ml-4'>Edit Course: <span className='font-normal'>{course?.title}</span></h1>
-      
-      <form onSubmit={handleSubmit(onSaveDetails)} className="w-full m-6 flex flex-col gap-6">
+    <div className="bg-linear-to-b from-[#E6FFFF] to-[#FFFFFF] p-6 pt-0">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
         
-        <div className="h-15 w-3/4 flex flex-col justify-around">
-          <label htmlFor="title" className="font-semibold">Title</label>
-          <input 
-            type="text" 
-            id="title"
-            className="w-full h-8 p-4 mt-2 border"
-            placeholder="Enter the title"
-            {...register("title", { required: true })}
-          />
-          {errors.title && <span className="text-red-500 text-sm">{errors.title.message}</span>}
-        </div>
-
-
-        <div className="h-20 w-3/4 flex flex-col gap-2">
-          <label htmlFor="description" className="font-semibold">Description</label>
-          <input 
-            type="text"
-            id="description"
-            className="h-15 w-full pl-4 pt-1 border"
-            {...register("description", { required: true })} 
-          />
-        </div>
-
-        <div className="h-15 w-3/4 flex flex-col gap-2">
-          <label htmlFor="price">Course Price</label>
-          <input 
-            type="text" 
-            id="price"
-            className="h-7 w-full p-4 border"
-            {...register("price", { required: true, valueAsNumber: true })} 
-          />
-        </div>
-
-        <div className="h-9 w-3/4 mt-4 flex flex-row gap-2 justify-center items-center">
-          <img 
-            src={course.imgUrl} 
-            alt={course.title} 
-            className="h-16 w-full object-contain rounded" 
-          />
+        <div className="w-full lg:w-1/2">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h1 className="text-xl font-bold text-gray-800 mb-6 border-b pb-4">
+              Edit Course Details
+            </h1>
           
-          <label className="font-semibold">Update Image:</label>
-          <input type="file" accept="image/*" {...register("image")} />
+            <form onSubmit={handleSubmit(onSaveDetails)} className="flex flex-col gap-5">
+              
+              <div className="flex flex-col gap-1">
+                <label htmlFor="title" className="font-semibold text-gray-700 text-sm">Course Title</label>
+                <input 
+                  type="text" 
+                  id="title"
+                  className={`w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 focus:outline-none transition ${errors.title ? 'border-red-500' : 'border-gray-300'}`}
+                  placeholder="Enter the title"
+                  {...register("title", { required: "Title is required" })}
+                />
+                {errors.title && <span className="text-red-500 text-xs">{errors.title.message}</span>}
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <label htmlFor="description" className="font-semibold text-gray-700 text-sm">Description</label>
+                <textarea 
+                  id="description"
+                  rows="4"
+                  className={`w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 focus:outline-none transition ${errors.description ? 'border-red-500' : 'border-gray-300'}`}
+                  placeholder="Course description..."
+                  {...register("description", { required: "Description is required" })} 
+                />
+                {errors.description && <span className="text-red-500 text-xs">{errors.description.message}</span>}
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <label htmlFor="price" className="font-semibold text-gray-700 text-sm">Price ($)</label>
+                <input 
+                  type="number" 
+                  id="price"
+                  step="0.01"
+                  className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                  {...register("price", { required: true, valueAsNumber: true })} 
+                />
+              </div>
+
+              <div className="flex flex-col gap-2 border-t pt-4 mt-2">
+                <label className="font-semibold text-gray-700 text-sm">Course Thumbnail</label>
+                
+                {course.imgUrl && (
+                  <div className="relative w-full h-48 bg-gray-100 rounded overflow-hidden border">
+                    <img 
+                      src={course.imgUrl} 
+                      alt={course.title} 
+                      className="w-full h-full object-cover" 
+                    />
+                  </div>
+                )}
+                
+                <input 
+                  type="file" 
+                  accept="image/*" 
+                  className="text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer mt-2"
+                  {...register("image")} 
+                />
+              </div>
+
+              <div className="flex justify-between items-center pt-6 mt-2 border-t">
+                
+                <button 
+                  type="button" 
+                  onClick={deletethecourse} 
+                  disabled={isDeleting}
+                  className="px-4 py-2 text-sm font-medium text-red-600 border rounded transition-colors disabled:opacity-50"
+                >
+                  {isDeleting ? "Deleting..." : "Delete Course"}
+                </button>
+
+                <button 
+                  type="submit" 
+                  disabled={isUpdating}
+                  className="px-6 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded shadow-sm transition-colors disabled:opacity-70"
+                >
+                  {isUpdating ? "Saving..." : "Save Changes"}
+                </button>
+              </div>
+
+            </form>
+          </div>
         </div>
 
-        <div className="h-9 w-3/4 mt-2 gap-3 text-[#FFFFFF] flex justify-end">
-          <button onClick={deletethecourse} className="h-full w-1/4 border bg-[#2563EB]" disabled={isDeleting}>
-            {isDeleting ? "Deleting..." : "Delete"}
-          </button>
-          <button type="submit" className="h-full w-1/4 border bg-[#2563EB]" disabled={isUpdating}>
-            {isUpdating ? "Saving..." : "Save Changes"}
-          </button>
+        <div className="w-full lg:w-1/2">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 h-full">
+            <h2 className="text-xl font-bold text-gray-800 mb-6 border-b pb-4">
+              Manage Content
+            </h2>
+            <SectionManager courseId={courseId} />
+          </div>
         </div>
 
-      </form>
-      </div>
-
-      <div className='w-1/2 flex flex-col'>
-        <SectionManager courseId={courseId} />
       </div>
     </div>
   );

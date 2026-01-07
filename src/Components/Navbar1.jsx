@@ -30,7 +30,7 @@ function Navbar(){
     // }
     return (
         <>
-        <nav className="bg-stone-50 top-0 left-0 w-full h-14 border-b flex items-center justify-between px-6">
+        <nav className="bg-[#E6FFFF] top-0 left-0 w-full h-14 border-b flex items-center justify-between px-6">
         
         <div className="flex items-center gap-3">
           {user && (
