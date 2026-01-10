@@ -2,7 +2,7 @@ import React from 'react'
 import { useAuth } from '@/Context/Authcontext'
 import { teacherProfileData, teacherUserProfile, studentProfileData, studentUserProfile } from '@/data/dummy'
 import { XCircle } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { replace, useNavigate } from 'react-router-dom'
 
 const Profile = () => {
   const { handleClick, user, logout, AllOff} = useAuth();
@@ -13,7 +13,7 @@ const Profile = () => {
   const logoutUser = () => {
       AllOff()
       logout()
-      navigate('/')
+      navigate('/', { replace: true })
     }
 
   return (

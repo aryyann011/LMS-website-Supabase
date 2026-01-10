@@ -55,7 +55,6 @@ export const sidebarLinks = [
       { name: "Schedule", path: "/teacher/calendar", icon: <CalendarDays/> },
       { name: "Task Board", path: "/teacher/kanban", icon: <Kanban/> },
       { name: "Editor", path: "/teacher/editor", icon: <FileEdit/> },
-      { name: "Color Picker", path: "/teacher/color-picker", icon: <Palette/> },
     ],
   },
   {

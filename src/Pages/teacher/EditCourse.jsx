@@ -38,6 +38,7 @@ function EditCourse() {
         toast.info('Uploading new image...');
         imageUrl = await uploadCourseImage(imageFile);
         toast.success('Image uploaded successfully');
+        
       }
 
       const newCourseInfo = {
@@ -50,6 +51,7 @@ function EditCourse() {
 
       await updateCourse(newCourseInfo).unwrap();
       toast.success('Course updated successfully');
+      navigate('/teacher/mycourse', { replace: true });
     } catch (error) {
       console.log("Failed to update course:", error);
       toast.error('Failed to update course');
@@ -62,7 +64,7 @@ function EditCourse() {
     try {
       await deleteCourse(courseId).unwrap();
       toast.success('Successfully deleted');
-      navigate('/teacher/mycourse');
+      navigate('/teacher/mycourse', { replace: true });
     } catch (error) {
       console.log("Failed to delete course:", error);
       toast.error('Failed to delete');

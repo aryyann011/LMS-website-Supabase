@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuth } from "../Context/Authcontext";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { MdCancel } from "react-icons/md";
 
 function Signup(){
 
@@ -36,11 +37,12 @@ const handleGoogleSignup = async () => {
 
     return (
         <div className="h-full w-full fixed flex flex-row justify-center inset-0 items-center z-50">
-            <form action="" onSubmit={handleSubmit(Signupuser)} className="h-3/4 w-1/4 flex flex-col gap-6 items-center bg-[#FFFFFF] p-5 rounded-2xl">
-                <div className="h-1/8 w-full flex flex-col items-center gap-1">
-                    <h1 className="text-[#212126] font-bold">Create your account</h1>
-                    <p className="text-[#6B7280] text-[14px]">Welcome! Please fill in the details to get started.</p>
-                </div>
+            <form action="" onSubmit={handleSubmit(Signupuser)} className="h-4/6 w-1/4 flex flex-col gap-4 items-center bg-[#FFFFFF] p-5 rounded-2xl border-2">
+                    <div className="w-full flex justify-end gap-18">
+                        <h1 className="text-[#212126] font-bold">Create your Account</h1>
+                        <MdCancel onClick={closeSignupModal} className="text-2xl cursor-pointer"/>
+                    </div>
+                <p className="text-[#6B7280] text-[14px]">Welcome! Please fill in the details to get started.</p>
                 <button onClick={handleGoogleSignup} className="h-8 w-9/10 cursor-pointer border flex flex-row justify-center items-center gap-3">
                     <img src="/image/images.png" className="h-3/4" alt="" />
                     <p>Continue with google</p>
@@ -100,7 +102,7 @@ const handleGoogleSignup = async () => {
                     <span onClick={() => {
                         closeSignupModal();
                         OpenloginModal();
-                    }} className="font-semibold">
+                    }} className="font-semibold cursor-pointer">
                         Sign In
                     </span>
                 </p>

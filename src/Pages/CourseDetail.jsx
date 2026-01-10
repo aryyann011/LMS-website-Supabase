@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import {
   useGetSectionsForCourseQuery,
   useGetCourseDetailQuery,
@@ -13,6 +13,7 @@ import { useAuth } from "../Context/Authcontext";
 import { toast } from "react-toastify";
 
 function CourseDetail() {
+  const navigate = useNavigate()
   const { courseId } = useParams();
   const { user, OpenloginModal, isLoading: isAuthLoading } = useAuth();
   const { data: sections, isLoading: isSectionLoading } =
@@ -149,7 +150,7 @@ function CourseDetail() {
               ) : isEnrolled ? (
                 // CASE C: User is enrolled
                 <button 
-                  onClick={() => navigate('my-learning')}
+                  onClick={() => navigate('/student/mylearning')}
                   className="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700"
                 >
                   Go to Course
