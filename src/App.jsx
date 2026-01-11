@@ -24,9 +24,9 @@ function App() {
   const {isloginModalOpen, isSignupModalOpen, isSidebarOpen, user, isClicked, handleClick} = useAuth()
   
   return (
-    <div className="w-full">
+    <div className="min-h-screen w-full">
       <div
-  className={`w-full bg-linear-to-b from-[#E6FFFF] to-[#FFFFFF] ${
+  className={`min-h-screen w-full bg-linear-to-b from-[#E6FFFF] to-[#FFFFFF] ${
     isloginModalOpen || isSignupModalOpen ? "blur-sm" : ""
   }`}
 >
@@ -47,7 +47,7 @@ function App() {
           </>
         )}
 
-        <main>
+        <main className='w-full'>
           {/* {isSidebarOpen && user && user.metadata === 'teacher' ? <Sidebar/> : ""} */}
           {/* {user?.user_metadata?.role === "student" && <StudentSidebar />} */}
           <Outlet/>

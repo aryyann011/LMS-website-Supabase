@@ -57,7 +57,6 @@ function Home() {
         </div>
 
         <ul className="w-full px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Card 1 */}
           <li className="border border-[#E1E1E1] rounded-lg overflow-hidden flex flex-col pb-4 hover:shadow-lg transition-shadow">
             <img className="h-48 w-full object-cover" src="/image/img2.png" alt="" />
             <div className="px-4 flex flex-col gap-2 mt-3 flex-grow">
@@ -76,7 +75,6 @@ function Home() {
             </div>
           </li>
 
-           {/* Card 2 */}
            <li className="border border-[#E1E1E1] rounded-lg overflow-hidden flex flex-col pb-4 hover:shadow-lg transition-shadow">
             <img className="h-48 w-full object-cover" src="/image/img3.png" alt="" />
             <div className="px-4 flex flex-col gap-2 mt-3 flex-grow">
@@ -212,7 +210,7 @@ function Home() {
       </div>
 
       {/* --- CTA SECTION --- */}
-      <div className="w-full max-w-4xl mt-20 mb-20 flex flex-col justify-center items-center gap-6 font-medium text-[#565656] px-4">
+      <div className="w-full max-w-4xl mt-20 flex flex-col justify-center items-center gap-6 font-medium text-[#565656] px-4">
         <h1 className="text-[#1F2937] text-2xl md:text-3xl w-full text-center font-semibold">Learn anything, anytime, anywhere</h1>
         <p className="text-center max-w-xl">
           Incididunt sint fugiat pariatur cupidatat consectetur sit cillum anim id veniam aliqua proident excepteur commodo do ea.

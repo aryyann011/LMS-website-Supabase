@@ -29,8 +29,8 @@ function Navbar(){
     //     user?.user_metadata?.role === 'student' ? toggleSidebar() : "";
     // }
     return (
-        <>
-        <nav className="bg-[#E6FFFF] top-0 left-0 w-full h-14 border-b flex items-center justify-between px-6">
+        // <>
+        <nav className="bg-[#E6FFFF] top-0 left-0 w-full h-14 border-b-2 flex items-center justify-between px-6">
         
         <div className="flex items-center gap-3">
           {user && (
@@ -77,8 +77,8 @@ function Navbar(){
         </div>
       </nav>
 
-      <div className="h-14" />
-    </>
+      // {/* <div className="h-14" /> */}
+      // {/* </> */}
     )
 }
 
