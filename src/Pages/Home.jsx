@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="h-auto w-full flex flex-col items-center px-4 md:px-0">
       
-      <div className="w-full max-w-2xl flex flex-col justify-center items-center text-center gap-6 mt-10 md:mt-20 py-10">
+      <div className="w-full max-w-5xl flex flex-col justify-center items-center text-center gap-6 mt-10 md:mt-20 py-10">
         <h1 className="md:w-3/4 w-3/4 font-bold text-3xl md:text-5xl leading-tight">
           Empower your future with the courses designed to{" "}
           <span className="text-[#2563EB]">fit your choice</span>
@@ -36,8 +36,8 @@ function Home() {
       </div>
 
       <div className="w-full max-w-4xl mt-6 flex flex-col items-center justify-center gap-6 py-8">
-        <p className="text-gray-500 text-sm">Trusted by learners from</p>
-        <ul className="w-full flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale transition-all hover:grayscale-0">
+        <p className="text-sm">Trusted by learners from</p>
+        <ul className="w-full flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 transition-all hover:grayscale-0">
           <li><img src="/image/microsoft_logo.svg" alt="Microsoft" className="h-6 md:h-8" /></li>
           <li><img src="/image/walmart_logo.svg" alt="Walmart" className="h-6 md:h-8" /></li>
           <li><img src="/image/accenture_logo.svg" alt="Accenture" className="h-6 md:h-8" /></li>
