@@ -14,7 +14,7 @@ const PublicLayout = () => {
          <Outlet />
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
       
     </div>
   );

@@ -14,7 +14,7 @@ function Browse() {
   }
 
   return (
-    <div className="w-full h-full flex flex-col items-center m-5">
+    <div className="w-full h-full flex flex-col items-center p-10">
       <div className="w-full h-30 flex flex-row justify-around items-center p-4">
         <div className="w-1/3 flex flex-col">
           <h1 className="text-3xl font-bold">Course List</h1>

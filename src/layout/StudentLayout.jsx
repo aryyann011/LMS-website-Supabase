@@ -21,7 +21,7 @@ console.log("Role found:", user?.user_metadata?.role);
         <div className="flex-1 overflow-y-visible hide-scrollbar bg-linear-to-b from-[#E6FFFF] to-[#FFFFFF]">
             <Navbar/>
             <Outlet />
-            <Footer/>
+            {/* <Footer/> */}
         </div>
         </div>  )
         : (<Navigate to="/home" replace /> )}

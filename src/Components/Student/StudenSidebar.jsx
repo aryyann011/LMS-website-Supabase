@@ -13,7 +13,7 @@ function StudentSidebar() {
 
   return (
     <div className={`
-    fixed inset-y-0 left-0 z-100 w-64 bg-white border-r
+    absolute inset-y-0 left-0 z-100 w-64 bg-white border-r
     transform transition-transform duration-300 ease-in-out
     ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
   `}>
@@ -37,13 +37,15 @@ function StudentSidebar() {
         text : "Enrolled Courses" },
   { to: 'courses', icon: <MdOutlineBallot className='text-[25px]' />, text: "All Courses" }
         ].map((element) => (
-                <Link key={element.text} to={element.to} className="w-65 mt-4 flex justify-start items-start">
-                   <h1 className=" font-semibold text-[18px] mb-3">
-                     {element.text}
-                   </h1>    
-                   <div className='absolute right-12'>
-                    {element.icon}
-                   </div>
+                <Link
+                  key={element.text}
+                  to={element.to}
+                  className="relative w-full mt-4 flex items-center justify-between"
+                >
+                  <h1 className="font-semibold text-[18px]">
+                    {element.text}
+                  </h1>
+                  {element.icon}
                 </Link>
               ))}
             </div>
